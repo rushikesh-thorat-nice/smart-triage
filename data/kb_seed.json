@@ -1,0 +1,90 @@
+[
+  {
+    "id": "kb-001",
+    "product": "payment-service",
+    "owner_team": "payments-oncall",
+    "severity": "high",
+    "pattern_description": "Out of memory (OOM) error in payment-service JVM causing pod restart and dropped transactions.",
+    "symptoms": "OutOfMemoryError: Java heap space at com.acme.payment.TransactionProcessor payment-service pod OOMKilled by kubernetes heap dump written to /tmp",
+    "resolution_command": "echo Restarting payment-service pod and scaling up temporarily",
+    "resolution_summary": "Restart affected pod and scale replicas by +1 while heap dump is analyzed.",
+    "auto_execute": true
+  },
+  {
+    "id": "kb-002",
+    "product": "orders-api",
+    "owner_team": "orders-oncall",
+    "severity": "high",
+    "pattern_description": "Database connection pool exhausted on orders-api. Requests time out waiting for a free connection.",
+    "symptoms": "HikariPool-1 - Connection is not available request timed out after 30000ms orders-api SQLTransientConnectionException connection pool exhausted",
+    "resolution_command": "echo Increasing HikariCP max pool size and cycling connections",
+    "resolution_summary": "Bounce the orders-api pool and raise max-pool-size from 20 to 40 in config.",
+    "auto_execute": false
+  },
+  {
+    "id": "kb-003",
+    "product": "log-shipper",
+    "owner_team": "sre",
+    "severity": "medium",
+    "pattern_description": "Disk full on the log volume causing filebeat to stop shipping and the app to fail on write.",
+    "symptoms": "no space left on device /var/log filebeat harvester error write /var/log/app.log: no space left disk full 100% used",
+    "resolution_command": "echo Rotating and compressing old logs clearing archives older than 3d",
+    "resolution_summary": "Rotate + compress old logs, delete rotated archives older than 3 days.",
+    "auto_execute": true
+  },
+  {
+    "id": "kb-004",
+    "product": "auth-gateway",
+    "owner_team": "platform-security",
+    "severity": "critical",
+    "pattern_description": "TLS certificate expired on the auth-gateway edge, browser clients get NET::ERR_CERT_DATE_INVALID.",
+    "symptoms": "x509: certificate has expired or is not yet valid tls: expired certificate NET::ERR_CERT_DATE_INVALID auth-gateway TLS handshake failed",
+    "resolution_command": "echo Triggering cert-manager reissue for auth-gateway example com",
+    "resolution_summary": "Renew via cert-manager and roll the auth-gateway deployment to pick up the new secret.",
+    "auto_execute": false
+  },
+  {
+    "id": "kb-005",
+    "product": "cache-service",
+    "owner_team": "platform-cache",
+    "severity": "medium",
+    "pattern_description": "Redis eviction spike from memory pressure — hit ratio drops and downstream services see cache misses.",
+    "symptoms": "redis maxmemory reached evicted_keys spiking used_memory 95% cache miss ratio elevated LRU eviction",
+    "resolution_command": "echo Bumping cache-service memory limit and flushing volatile keys",
+    "resolution_summary": "Increase Redis maxmemory + flush volatile keys with short TTL.",
+    "auto_execute": true
+  },
+  {
+    "id": "kb-006",
+    "product": "checkout-web",
+    "owner_team": "checkout-oncall",
+    "severity": "high",
+    "pattern_description": "Deploy of checkout-web failing readiness probes — likely a bad rollout that needs to be rolled back.",
+    "symptoms": "readiness probe failed HTTP 503 checkout-web deployment rollout stuck 0/3 ready CrashLoopBackOff",
+    "resolution_command": "echo kubectl rollout undo deployment checkout-web",
+    "resolution_summary": "Roll back the deployment to the previous revision and notify the deploy author.",
+    "auto_execute": false
+  },
+  {
+    "id": "kb-007",
+    "product": "inventory-service",
+    "owner_team": "inventory-oncall",
+    "severity": "high",
+    "pattern_description": "Upstream 5xx spike from inventory-service is failing product listing calls with elevated error rates.",
+    "symptoms": "upstream inventory-service returned 502 elevated 5xx rate 15% p99 latency spike bad gateway upstream connect error",
+    "resolution_command": "echo Draining unhealthy inventory-service pods forcing new endpoints registration",
+    "resolution_summary": "Drain unhealthy pods so the load balancer sends traffic only to healthy replicas.",
+    "auto_execute": false
+  },
+  {
+    "id": "kb-008",
+    "product": "reports-cron",
+    "owner_team": "data-platform",
+    "severity": "low",
+    "pattern_description": "Nightly reports-cron job hung past its usual duration, blocking downstream ETL.",
+    "symptoms": "reports-cron job running for 3600s expected 600s no heartbeat cron job hung stuck long-running batch",
+    "resolution_command": "echo Killing hung reports-cron job and re-enqueueing",
+    "resolution_summary": "Kill the hung job and re-enqueue it — downstream ETL waits on completion.",
+    "auto_execute": true
+  }
+]

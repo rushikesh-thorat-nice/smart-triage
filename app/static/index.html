@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Smart Triage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .badge { @apply inline-block px-2 py-0.5 rounded text-xs font-semibold; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+  <div class="max-w-7xl mx-auto px-6 py-6">
+    <header class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-2xl font-bold">Smart Triage</h1>
+        <p class="text-sm text-slate-400">AI-powered incident triage &middot; historical KB &middot; controlled automation</p>
+      </div>
+      <div id="ws-status" class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">connecting…</div>
+    </header>
+
+    <!-- Metrics -->
+    <section id="metrics" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+      <div class="bg-slate-900 rounded-lg p-4 border border-slate-800">
+        <div class="text-xs text-slate-400 uppercase tracking-wide">Total</div>
+        <div class="text-2xl font-bold mt-1" data-metric="total">0</div>
+      </div>
+      <div class="bg-slate-900 rounded-lg p-4 border border-emerald-900/40">
+        <div class="text-xs text-emerald-400 uppercase tracking-wide">Auto-resolved</div>
+        <div class="text-2xl font-bold mt-1" data-metric="auto_resolved">0</div>
+      </div>
+      <div class="bg-slate-900 rounded-lg p-4 border border-blue-900/40">
+        <div class="text-xs text-blue-400 uppercase tracking-wide">Approved</div>
+        <div class="text-2xl font-bold mt-1" data-metric="approved">0</div>
+      </div>
+      <div class="bg-slate-900 rounded-lg p-4 border border-amber-900/40">
+        <div class="text-xs text-amber-400 uppercase tracking-wide">Pages avoided</div>
+        <div class="text-2xl font-bold mt-1" data-metric="pages_avoided">0</div>
+      </div>
+      <div class="bg-slate-900 rounded-lg p-4 border border-rose-900/40">
+        <div class="text-xs text-rose-400 uppercase tracking-wide">New alerts</div>
+        <div class="text-2xl font-bold mt-1" data-metric="alerted_new">0</div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Pending approvals -->
+      <section class="bg-slate-900 rounded-lg p-4 border border-slate-800">
+        <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">
+          <span>Pending approvals</span>
+          <span id="pending-count" class="text-xs bg-amber-900/50 text-amber-300 px-2 py-0.5 rounded">0</span>
+        </h2>
+        <div id="pending-list" class="space-y-3">
+          <p class="text-sm text-slate-500">Nothing pending.</p>
+        </div>
+      </section>
+
+      <!-- Live feed -->
+      <section class="lg:col-span-2 bg-slate-900 rounded-lg p-4 border border-slate-800">
+        <h2 class="text-lg font-semibold mb-3">Incident feed</h2>
+        <div id="incident-list" class="space-y-2 max-h-[70vh] overflow-y-auto">
+          <p class="text-sm text-slate-500">Waiting for incidents…</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+<script>
+const statusStyles = {
+  auto_resolved:    "bg-emerald-900/50 text-emerald-300 border-emerald-800",
+  approved:         "bg-blue-900/50 text-blue-300 border-blue-800",
+  pending_approval: "bg-amber-900/50 text-amber-300 border-amber-800",
+  alerted_new:      "bg-rose-900/50 text-rose-300 border-rose-800",
+  rejected:         "bg-slate-800 text-slate-400 border-slate-700",
+  failed:           "bg-red-900/60 text-red-200 border-red-800",
+};
+
+const severityStyles = {
+  critical: "bg-red-900/50 text-red-300",
+  high:     "bg-rose-900/50 text-rose-300",
+  medium:   "bg-amber-900/50 text-amber-300",
+  low:      "bg-blue-900/50 text-blue-300",
+  unknown:  "bg-slate-800 text-slate-400",
+};
+
+function badge(text, styleClass) {
+  return `<span class="inline-block px-2 py-0.5 rounded text-xs font-semibold border ${styleClass}">${text}</span>`;
+}
+
+function renderIncident(inc) {
+  const s = statusStyles[inc.status] || "bg-slate-800 text-slate-300 border-slate-700";
+  const sev = severityStyles[inc.severity] || severityStyles.unknown;
+  const time = inc.created_at ? new Date(inc.created_at).toLocaleTimeString() : "";
+  return `
+    <div class="border border-slate-800 rounded-md p-3 hover:bg-slate-800/40">
+      <div class="flex items-center gap-2 flex-wrap mb-1">
+        <span class="text-xs text-slate-500">#${inc.id} · ${time}</span>
+        ${badge(inc.status, s)}
+        ${badge(inc.severity, sev)}
+        <span class="text-xs text-slate-300 font-medium">${inc.product}</span>
+        <span class="text-xs text-slate-500">→ ${inc.owner_team}</span>
+        <span class="text-xs text-slate-500 ml-auto">conf ${(inc.confidence * 100).toFixed(0)}%</span>
+      </div>
+      <div class="text-sm font-mono text-slate-300 break-all">${escapeHtml(inc.log_line)}</div>
+      <div class="text-xs text-slate-500 mt-1">${escapeHtml(inc.reasoning || "")}</div>
+      ${inc.action_output ? `<pre class="mt-2 text-xs bg-slate-950 border border-slate-800 rounded p-2 whitespace-pre-wrap">${escapeHtml(inc.action_output)}</pre>` : ""}
+    </div>
+  `;
+}
+
+function renderPending(inc) {
+  return `
+    <div class="border border-amber-900/40 rounded-md p-3 bg-slate-950/40">
+      <div class="flex items-center gap-2 flex-wrap mb-1">
+        <span class="text-xs text-slate-500">#${inc.id}</span>
+        <span class="text-xs font-medium text-slate-200">${inc.product}</span>
+        <span class="text-xs text-slate-500">→ ${inc.owner_team}</span>
+      </div>
+      <div class="text-xs font-mono text-slate-300 break-all mb-2">${escapeHtml((inc.log_line || "").slice(0, 200))}</div>
+      <div class="text-xs text-slate-400 mb-2">${escapeHtml(inc.reasoning || "")}</div>
+      <div class="text-xs bg-slate-950 border border-slate-800 rounded p-2 font-mono mb-3">${escapeHtml(inc.recommended_action || "")}</div>
+      <div class="flex gap-2">
+        <button data-approve="${inc.id}" class="px-3 py-1 text-xs bg-emerald-700 hover:bg-emerald-600 rounded font-medium">Approve</button>
+        <button data-reject="${inc.id}" class="px-3 py-1 text-xs bg-slate-700 hover:bg-slate-600 rounded font-medium">Reject</button>
+      </div>
+    </div>
+  `;
+}
+
+function escapeHtml(s) {
+  return String(s || "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
+
+async function refresh() {
+  const [incidents, pending, metrics] = await Promise.all([
+    fetch("/api/incidents?limit=100").then(r => r.json()),
+    fetch("/api/pending").then(r => r.json()),
+    fetch("/api/metrics").then(r => r.json()),
+  ]);
+
+  const feed = document.getElementById("incident-list");
+  feed.innerHTML = incidents.length
+    ? incidents.map(renderIncident).join("")
+    : `<p class="text-sm text-slate-500">Waiting for incidents…</p>`;
+
+  const pend = document.getElementById("pending-list");
+  pend.innerHTML = pending.length
+    ? pending.map(renderPending).join("")
+    : `<p class="text-sm text-slate-500">Nothing pending.</p>`;
+  document.getElementById("pending-count").textContent = pending.length;
+
+  for (const [k, v] of Object.entries(metrics)) {
+    const el = document.querySelector(`[data-metric="${k}"]`);
+    if (el) el.textContent = v;
+  }
+}
+
+document.addEventListener("click", async (e) => {
+  const approveId = e.target?.dataset?.approve;
+  const rejectId = e.target?.dataset?.reject;
+  if (approveId) {
+    e.target.disabled = true;
+    e.target.textContent = "running…";
+    await fetch(`/api/approve/${approveId}`, { method: "POST" });
+    refresh();
+  } else if (rejectId) {
+    e.target.disabled = true;
+    await fetch(`/api/reject/${rejectId}`, { method: "POST" });
+    refresh();
+  }
+});
+
+function connectWs() {
+  const proto = location.protocol === "https:" ? "wss:" : "ws:";
+  const ws = new WebSocket(`${proto}//${location.host}/ws`);
+  const status = document.getElementById("ws-status");
+  ws.onopen = () => { status.textContent = "● live"; status.className = "text-xs px-2 py-1 rounded bg-emerald-900/60 text-emerald-300"; };
+  ws.onclose = () => {
+    status.textContent = "disconnected — retrying";
+    status.className = "text-xs px-2 py-1 rounded bg-rose-900/60 text-rose-300";
+    setTimeout(connectWs, 2000);
+  };
+  ws.onmessage = () => refresh();
+}
+
+refresh();
+setInterval(refresh, 15000);
+connectWs();
+</script>
+</body>
+</html>
