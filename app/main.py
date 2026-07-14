@@ -11,7 +11,7 @@ from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import investigator, kb, runner, triage
+from . import emailer, investigator, kb, runner, triage
 from .config import settings
 from .db import Incident, get_session, init_db
 from .ingest import tail_lines
@@ -111,6 +111,9 @@ async def _handle_log_line(line: str) -> None:
                 inc = row
 
     await notifier.emit({"type": "incident", "incident": _incident_to_dict(inc)})
+
+    if status == "alerted_new":
+        asyncio.create_task(emailer.notify_new_incident(_incident_to_dict(inc)))
 
 
 async def _run_investigation(incident_id: int, scenario_slug: str, log_line: str) -> dict:
@@ -291,6 +294,7 @@ async def approve(incident_id: int):
             payload = _incident_to_dict(row)
 
         await notifier.emit({"type": "approval_result", "incident": payload})
+        asyncio.create_task(emailer.notify_investigation_done(payload))
         return payload
 
     # Default: execute the shell command.

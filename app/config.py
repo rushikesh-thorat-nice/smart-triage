@@ -34,6 +34,18 @@ class Settings(BaseSettings):
         "true",
     ]
 
+    # Email notifications via Gmail SMTP — leave smtp_user blank to disable
+    smtp_user: str = ""        # your Gmail address
+    smtp_password: str = ""    # 16-char app password from myaccount.google.com/apppasswords
+    smtp_from_name: str = "Smart Triage"
+
+    # Fallback recipient when a team has no entry in team_contacts
+    notification_email: str = ""
+
+    # JSON map of team-slug → email address.
+    # Example: {"payments-oncall": "payments@co.com", "sre": "sre@co.com"}
+    team_contacts: str = "{}"
+
 
 settings = Settings()
 

@@ -75,35 +75,65 @@ def main():
     print(f"[generator] appending to {path}. Ctrl+C to stop.")
 
     with path.open("a", encoding="utf-8") as fh:
+        # ---------- Startup burst ----------
+        # Seed 10 incidents up front so the dashboard is populated the moment
+        # the user opens it. Mix of simple known / simple novel / one complex
+        # scenario — enough variety to show every code path (auto-resolved,
+        # pending approval, alerted new, investigate).
+        print("[generator] emitting startup burst of 10 incidents")
+        startup_plan = [
+            ("known", KNOWN_LINES[0]),   # payment-service OOM
+            ("known", KNOWN_LINES[2]),   # log-shipper disk full (auto-resolve)
+            ("known", KNOWN_LINES[1]),   # orders-api HikariPool
+            ("novel", NOVEL_LINES[0]),   # elasticsearch yellow
+            ("known", KNOWN_LINES[4]),   # cache-service redis eviction
+            ("known", KNOWN_LINES[3]),   # auth-gateway TLS
+            ("complex", "call-recording-stopped"),  # <-- multi-service burst
+            ("known", KNOWN_LINES[7]),   # reports-cron hung
+            ("novel", NOVEL_LINES[2]),   # ml-inference checksum mismatch
+            ("known", KNOWN_LINES[6]),   # inventory-service 502s
+        ]
+        for kind, payload in startup_plan:
+            if kind == "complex":
+                lines = COMPLEX_SCENARIOS[payload]
+                print(f"[generator] startup: complex scenario {payload}")
+                for i, line in enumerate(lines):
+                    _emit_line(fh, line)
+                    if i < len(lines) - 1:
+                        time.sleep(0.25)
+            else:
+                _emit_line(fh, payload)
+                print(f"[generator] startup: {payload[:100]}")
+            # Small gap between incidents so the triage engine can keep up.
+            time.sleep(2.5)
+
+        # ---------- Steady state ----------
+        # After the startup burst, trickle in one incident per ~minute so the
+        # feed keeps updating without overwhelming the operator.
+        print("[generator] switching to steady-state cadence (1 incident/min)")
         iteration = 0
         while True:
             iteration += 1
-            # Every ~4th iteration, emit a complex multi-service burst so the
-            # investigator path gets exercised during the demo.
-            if iteration % 4 == 0:
+
+            # Every 5th steady-state incident is a complex multi-service burst.
+            if iteration % 5 == 0:
                 scenario_name, lines = random.choice(list(COMPLEX_SCENARIOS.items()))
-                print(f"[generator] emitting complex scenario: {scenario_name}")
+                print(f"[generator] steady: complex scenario {scenario_name}")
                 for i, line in enumerate(lines):
                     _emit_line(fh, line)
-                    # Small stagger so lines land in order, but the whole
-                    # burst arrives together as one incident cluster.
                     if i < len(lines) - 1:
                         time.sleep(0.3)
-                # Long pause AFTER a complex burst — gives the viewer time to
-                # read the pending card and click Investigate without more
-                # incidents piling up.
-                time.sleep(random.uniform(75, 100))
-                continue
-
-            # Otherwise: 80% known simple, 20% novel.
-            if random.random() < 0.8:
-                line = random.choice(KNOWN_LINES)
             else:
-                line = random.choice(NOVEL_LINES)
-            _emit_line(fh, line)
-            print(f"[generator] emitted: {line[:120]}")
-            # Slower cadence: one incident every 60-90 seconds.
-            time.sleep(random.uniform(60, 90))
+                # 80% known, 20% novel.
+                if random.random() < 0.8:
+                    line = random.choice(KNOWN_LINES)
+                else:
+                    line = random.choice(NOVEL_LINES)
+                _emit_line(fh, line)
+                print(f"[generator] steady: {line[:100]}")
+
+            # ~1 minute between incidents.
+            time.sleep(random.uniform(55, 70))
 
 
 if __name__ == "__main__":

@@ -3,6 +3,15 @@ import json
 from typing import Any
 
 
+def _safe_print(s: str) -> None:
+    """Print that survives Windows cp1252 stdout — replaces non-encodable
+    characters instead of crashing the whole request."""
+    try:
+        print(s, flush=True)
+    except UnicodeEncodeError:
+        print(s.encode("ascii", "replace").decode("ascii"), flush=True)
+
+
 class Notifier:
     """Fan-out event bus for the dashboard.
 
@@ -39,7 +48,7 @@ class Notifier:
     async def emit(self, event: dict[str, Any]) -> None:
         line = self._format_console(event)
         if line:
-            print(line, flush=True)
+            _safe_print(line)
         for q in list(self._queues):
             try:
                 q.put_nowait(event)
@@ -49,13 +58,7 @@ class Notifier:
     async def emit_term(self, incident_id: int, level: str, text: str) -> None:
         """Push a line to the investigator terminal WS + console."""
         event = {"type": "term", "incident_id": incident_id, "level": level, "text": text}
-        # Windows console defaults to cp1252 and crashes on unicode box chars;
-        # encode to ascii with replacement for the console-mirror only.
-        try:
-            print(f"[term#{incident_id}] {level}: {text}", flush=True)
-        except UnicodeEncodeError:
-            safe = text.encode("ascii", "replace").decode("ascii")
-            print(f"[term#{incident_id}] {level}: {safe}", flush=True)
+        _safe_print(f"[term#{incident_id}] {level}: {text}")
         for q in list(self._term_queues):
             try:
                 q.put_nowait(event)
