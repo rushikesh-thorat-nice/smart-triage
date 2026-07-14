@@ -1,6 +1,12 @@
 """Simulated log emitter — appends realistic incident lines into sample_logs/app.log.
 
 Run standalone: `python -m app.generator`
+
+Emits three kinds of traffic:
+  - Simple known issues (single log line matching a KB entry)
+  - Novel issues (single log line, no KB match — exercises the alert-only path)
+  - Complex multi-service bursts (a coordinated set of lines from several services
+    around the same time, exercising the investigator agent path)
 """
 from __future__ import annotations
 
@@ -33,6 +39,28 @@ NOVEL_LINES = [
 ]
 
 
+# Complex multi-service bursts. Each entry is a scenario that emits a
+# coordinated sequence of log lines from several services. The final "trigger"
+# line is what the KB entry matches against — its scenario_slug then tells the
+# investigator agent which context folder to fetch.
+COMPLEX_SCENARIOS = {
+    "call-recording-stopped": [
+        "media-server INFO peer=recorder-3 packets_fwd=8421 rtcp_ok",
+        "call-recorder INFO session=sess_abc123 asr_worker=w4 frame_count=1204",
+        "file-server WARN disk_usage=/var/nfs/recordings 95% (allocated 9.5T / 10T)",
+        "call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device",
+        "file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings",
+        "call-recorder ERROR session=sess_abc123 dropping recording, IO error",
+        "call-recorder WARN transcription queue depth=4123 (soft-limit 4000)",
+        "media-server WARN peer=recorder-3 forwarding stalled buffer=812",
+        "file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)",
+        "media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries",
+        # This last line is the trigger — call-recording pipeline failed, needs investigation.
+        "operator-alert customer=acme-corp reports call recording suddenly stopped ticket=INC-9142 call-recorder pipeline degraded",
+    ],
+}
+
+
 def _emit_line(fh, line: str) -> None:
     ts = datetime.utcnow().isoformat(timespec="seconds") + "Z"
     fh.write(f"{ts} {line}\n")
@@ -47,8 +75,24 @@ def main():
     print(f"[generator] appending to {path}. Ctrl+C to stop.")
 
     with path.open("a", encoding="utf-8") as fh:
+        iteration = 0
         while True:
-            # 80% known, 20% novel — biased so the demo hits the auto-resolve path often.
+            iteration += 1
+            # Every ~7th iteration, emit a complex multi-service burst so the
+            # investigator path gets exercised regularly during the demo.
+            if iteration % 7 == 0:
+                scenario_name, lines = random.choice(list(COMPLEX_SCENARIOS.items()))
+                print(f"[generator] emitting complex scenario: {scenario_name}")
+                for i, line in enumerate(lines):
+                    _emit_line(fh, line)
+                    # Small stagger so lines land in the right order but the whole
+                    # burst arrives faster than a normal poll cycle.
+                    if i < len(lines) - 1:
+                        time.sleep(0.4)
+                time.sleep(random.uniform(6, 10))
+                continue
+
+            # Otherwise: 80% known simple, 20% novel.
             if random.random() < 0.8:
                 line = random.choice(KNOWN_LINES)
             else:

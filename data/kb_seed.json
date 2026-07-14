@@ -86,5 +86,18 @@
     "resolution_command": "echo Killing hung reports-cron job and re-enqueueing",
     "resolution_summary": "Kill the hung job and re-enqueue it — downstream ETL waits on completion.",
     "auto_execute": true
+  },
+  {
+    "id": "kb-009",
+    "product": "call-recorder",
+    "owner_team": "voice-platform-oncall",
+    "severity": "high",
+    "pattern_description": "Call recording pipeline degraded or stopped — spans media-server → call-recorder → file-server. Root cause could be any of 5 components; requires cross-service investigation.",
+    "symptoms": "call-recorder TranscriptWriter write error /mnt/recordings No space left on device transcription queue full media-server peer=recorder unreachable forwarding stalled file-server nfsd RTP stream dropped recording quota reached",
+    "action_type": "investigate",
+    "scenario_slug": "call-recording-stopped",
+    "resolution_command": null,
+    "resolution_summary": "Fetch investigation context from the incident-knowledge repo, correlate logs across all 3 services, and identify which component is faulty before paging the owner.",
+    "auto_execute": false
   }
 ]

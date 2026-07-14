@@ -1,6 +1,8 @@
 import asyncio
+import json
 import subprocess
 import sys
+from collections import deque
 from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
@@ -9,7 +11,7 @@ from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import kb, runner, triage
+from . import investigator, kb, runner, triage
 from .config import settings
 from .db import Incident, get_session, init_db
 from .ingest import tail_lines
@@ -17,6 +19,10 @@ from .notifier import notifier
 
 
 STATIC_DIR = Path(__file__).parent / "static"
+
+# Rolling buffer of recent log lines so the investigator can send a small
+# time-window of context along with the trigger line.
+_recent_log_lines: deque[str] = deque(maxlen=40)
 
 
 def _incident_to_dict(inc: Incident) -> dict:
@@ -32,13 +38,18 @@ def _incident_to_dict(inc: Incident) -> dict:
         "confidence": inc.confidence,
         "reasoning": inc.reasoning,
         "recommended_action": inc.recommended_action,
+        "action_type": inc.action_type,
+        "scenario_slug": inc.scenario_slug,
         "status": inc.status,
         "action_output": inc.action_output,
+        "investigation_report": json.loads(inc.investigation_report) if inc.investigation_report else None,
         "resolved_at": inc.resolved_at.isoformat() if inc.resolved_at else None,
     }
 
 
 async def _handle_log_line(line: str) -> None:
+    _recent_log_lines.append(line)
+
     if not triage.is_triageable(line):
         return
 
@@ -56,8 +67,10 @@ async def _handle_log_line(line: str) -> None:
     owner_team = matched_kb.owner_team if matched_kb else "sre-general"
     severity = matched_kb.severity if matched_kb else "unknown"
     recommended_action = matched_kb.resolution_command if matched_kb else None
+    action_type = matched_kb.action_type if matched_kb else "execute"
+    scenario_slug = matched_kb.scenario_slug if matched_kb else None
 
-    if matched_kb and matched_kb.auto_execute:
+    if matched_kb and matched_kb.auto_execute and action_type == "execute":
         status = "auto_resolved"
     elif matched_kb:
         status = "pending_approval"
@@ -74,6 +87,8 @@ async def _handle_log_line(line: str) -> None:
         confidence=float(decision["confidence"]),
         reasoning=decision["reasoning"],
         recommended_action=recommended_action,
+        action_type=action_type,
+        scenario_slug=scenario_slug,
         status=status,
     )
 
@@ -96,6 +111,22 @@ async def _handle_log_line(line: str) -> None:
                 inc = row
 
     await notifier.emit({"type": "incident", "incident": _incident_to_dict(inc)})
+
+
+async def _run_investigation(incident_id: int, scenario_slug: str, log_line: str) -> dict:
+    context_snapshot = list(_recent_log_lines)
+
+    async def term(level: str, text: str) -> None:
+        await notifier.emit_term(incident_id, level, text)
+
+    report = await investigator.investigate(
+        incident_id=incident_id,
+        scenario_slug=scenario_slug,
+        log_line=log_line,
+        recent_context_lines=context_snapshot,
+        term=term,
+    )
+    return report
 
 
 async def _tail_task():
@@ -184,12 +215,16 @@ async def metrics():
     total = len(rows)
     auto = sum(1 for r in rows if r.status == "auto_resolved")
     approved = sum(1 for r in rows if r.status == "approved")
+    investigated = sum(1 for r in rows if r.status == "investigated")
+    investigating = sum(1 for r in rows if r.status == "investigating")
     new_alerts = sum(1 for r in rows if r.status == "alerted_new")
     pending = sum(1 for r in rows if r.status == "pending_approval")
     rejected = sum(1 for r in rows if r.status == "rejected")
 
-    # Rough "pages avoided" — every known issue would have paged a broad on-call in the old world.
-    pages_avoided = auto + approved
+    # Rough "pages avoided" — every known issue would have paged a broad on-call
+    # in the old world. Investigation successes count as pages narrowed, since
+    # they route to the correct team instead of every team.
+    pages_avoided = auto + approved + investigated
 
     resolved = [r for r in rows if r.resolved_at]
     if resolved:
@@ -201,6 +236,8 @@ async def metrics():
         "total": total,
         "auto_resolved": auto,
         "approved": approved,
+        "investigated": investigated,
+        "investigating": investigating,
         "pending_approval": pending,
         "alerted_new": new_alerts,
         "rejected": rejected,
@@ -220,9 +257,45 @@ async def approve(incident_id: int):
                 status_code=409,
                 detail=f"incident is in status '{inc.status}', not pending_approval",
             )
-        if not inc.recommended_action:
-            raise HTTPException(status_code=400, detail="no recommended action to run")
+        action_type = inc.action_type
+        scenario_slug = inc.scenario_slug
+        log_line = inc.log_line
         action = inc.recommended_action
+
+    # Investigate-type approvals launch the agent instead of running a shell command.
+    if action_type == "investigate":
+        if not scenario_slug:
+            raise HTTPException(status_code=400, detail="investigate action with no scenario_slug")
+
+        with get_session() as session:
+            row = session.get(Incident, incident_id)
+            row.status = "investigating"
+            session.commit()
+            session.refresh(row)
+            payload = _incident_to_dict(row)
+        await notifier.emit({"type": "incident", "incident": payload})
+
+        report = await _run_investigation(incident_id, scenario_slug, log_line)
+
+        with get_session() as session:
+            row = session.get(Incident, incident_id)
+            row.investigation_report = json.dumps(report)
+            row.status = "failed" if "error" in report else "investigated"
+            row.resolved_at = datetime.utcnow()
+            # Overwrite owner_team from the investigation if the model chose a
+            # more specific team.
+            if isinstance(report.get("page_team"), str) and report["page_team"]:
+                row.owner_team = report["page_team"]
+            session.commit()
+            session.refresh(row)
+            payload = _incident_to_dict(row)
+
+        await notifier.emit({"type": "approval_result", "incident": payload})
+        return payload
+
+    # Default: execute the shell command.
+    if not action:
+        raise HTTPException(status_code=400, detail="no recommended action to run")
 
     result = await asyncio.to_thread(runner.execute, action)
 
@@ -272,3 +345,18 @@ async def websocket_endpoint(ws: WebSocket):
         pass
     finally:
         notifier.unsubscribe(q)
+
+
+@app.websocket("/ws-term")
+async def websocket_terminal(ws: WebSocket):
+    """Live stream of the investigator agent's step-by-step trace."""
+    await ws.accept()
+    q = notifier.subscribe_term()
+    try:
+        while True:
+            event = await q.get()
+            await ws.send_json(event)
+    except WebSocketDisconnect:
+        pass
+    finally:
+        notifier.unsubscribe_term(q)

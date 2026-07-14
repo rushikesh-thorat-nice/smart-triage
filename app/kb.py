@@ -65,9 +65,11 @@ def seed_from_file(path: str | None = None) -> int:
                 severity=e["severity"],
                 pattern_description=e["pattern_description"],
                 symptoms=e["symptoms"],
-                resolution_command=e["resolution_command"],
+                action_type=e.get("action_type", "execute"),
+                resolution_command=e.get("resolution_command"),
                 resolution_summary=e["resolution_summary"],
-                auto_execute=e["auto_execute"],
+                scenario_slug=e.get("scenario_slug"),
+                auto_execute=e.get("auto_execute", False),
             ))
         session.commit()
 
@@ -120,6 +122,8 @@ def list_entries() -> list[dict[str, Any]]:
                 "pattern_description": r.pattern_description,
                 "resolution_summary": r.resolution_summary,
                 "resolution_command": r.resolution_command,
+                "action_type": r.action_type,
+                "scenario_slug": r.scenario_slug,
                 "auto_execute": r.auto_execute,
             }
             for r in rows

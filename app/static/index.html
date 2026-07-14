@@ -6,7 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .badge { @apply inline-block px-2 py-0.5 rounded text-xs font-semibold; }
+    /* Terminal styling */
+    #terminal { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; }
+    #terminal .row { padding: 1px 4px; }
+    .lvl-fetch    { color: #7dd3fc; }
+    .lvl-step     { color: #fde68a; font-weight: 600; }
+    .lvl-info     { color: #cbd5e1; }
+    .lvl-claude   { color: #c4b5fd; }
+    .lvl-verdict  { color: #86efac; font-weight: 600; }
+    .lvl-evidence { color: #f9a8d4; }
+    .lvl-warn     { color: #fdba74; }
+    .lvl-error    { color: #fca5a5; font-weight: 600; }
+    .lvl-ts       { color: #64748b; margin-right: 8px; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen">
@@ -14,13 +25,16 @@
     <header class="flex items-center justify-between mb-6">
       <div>
         <h1 class="text-2xl font-bold">Smart Triage</h1>
-        <p class="text-sm text-slate-400">AI-powered incident triage &middot; historical KB &middot; controlled automation</p>
+        <p class="text-sm text-slate-400">AI-powered incident triage · historical KB · multi-component investigation</p>
       </div>
-      <div id="ws-status" class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">connecting…</div>
+      <div class="flex gap-2">
+        <div id="ws-status" class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">feed: connecting…</div>
+        <div id="ws-term-status" class="text-xs px-2 py-1 rounded bg-slate-800 text-slate-400">term: connecting…</div>
+      </div>
     </header>
 
     <!-- Metrics -->
-    <section id="metrics" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+    <section id="metrics" class="grid grid-cols-2 md:grid-cols-6 gap-3 mb-6">
       <div class="bg-slate-900 rounded-lg p-4 border border-slate-800">
         <div class="text-xs text-slate-400 uppercase tracking-wide">Total</div>
         <div class="text-2xl font-bold mt-1" data-metric="total">0</div>
@@ -33,6 +47,10 @@
         <div class="text-xs text-blue-400 uppercase tracking-wide">Approved</div>
         <div class="text-2xl font-bold mt-1" data-metric="approved">0</div>
       </div>
+      <div class="bg-slate-900 rounded-lg p-4 border border-purple-900/40">
+        <div class="text-xs text-purple-400 uppercase tracking-wide">Investigated</div>
+        <div class="text-2xl font-bold mt-1" data-metric="investigated">0</div>
+      </div>
       <div class="bg-slate-900 rounded-lg p-4 border border-amber-900/40">
         <div class="text-xs text-amber-400 uppercase tracking-wide">Pages avoided</div>
         <div class="text-2xl font-bold mt-1" data-metric="pages_avoided">0</div>
@@ -43,7 +61,7 @@
       </div>
     </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
       <!-- Pending approvals -->
       <section class="bg-slate-900 rounded-lg p-4 border border-slate-800">
         <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">
@@ -58,17 +76,34 @@
       <!-- Live feed -->
       <section class="lg:col-span-2 bg-slate-900 rounded-lg p-4 border border-slate-800">
         <h2 class="text-lg font-semibold mb-3">Incident feed</h2>
-        <div id="incident-list" class="space-y-2 max-h-[70vh] overflow-y-auto">
+        <div id="incident-list" class="space-y-2 max-h-[60vh] overflow-y-auto">
           <p class="text-sm text-slate-500">Waiting for incidents…</p>
         </div>
       </section>
     </div>
+
+    <!-- Investigator terminal -->
+    <section class="bg-slate-900 rounded-lg border border-purple-900/50 overflow-hidden">
+      <div class="flex items-center justify-between px-4 py-2 bg-slate-950 border-b border-purple-900/40">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-2 h-2 bg-purple-400 rounded-full"></span>
+          <h2 class="text-sm font-semibold text-purple-300">Investigator agent terminal</h2>
+          <span class="text-xs text-slate-500">/ws-term</span>
+        </div>
+        <button id="clear-term" class="text-xs text-slate-500 hover:text-slate-300">clear</button>
+      </div>
+      <div id="terminal" class="bg-slate-950 text-slate-200 p-3 h-64 overflow-y-auto">
+        <div class="text-slate-500 text-xs">Waiting for the investigator agent… click Approve on a "call-recording" or other investigate-type incident to see it work.</div>
+      </div>
+    </section>
   </div>
 
 <script>
 const statusStyles = {
   auto_resolved:    "bg-emerald-900/50 text-emerald-300 border-emerald-800",
   approved:         "bg-blue-900/50 text-blue-300 border-blue-800",
+  investigated:     "bg-purple-900/50 text-purple-300 border-purple-800",
+  investigating:    "bg-purple-800/50 text-purple-200 border-purple-700 animate-pulse",
   pending_approval: "bg-amber-900/50 text-amber-300 border-amber-800",
   alerted_new:      "bg-rose-900/50 text-rose-300 border-rose-800",
   rejected:         "bg-slate-800 text-slate-400 border-slate-700",
@@ -91,12 +126,31 @@ function renderIncident(inc) {
   const s = statusStyles[inc.status] || "bg-slate-800 text-slate-300 border-slate-700";
   const sev = severityStyles[inc.severity] || severityStyles.unknown;
   const time = inc.created_at ? new Date(inc.created_at).toLocaleTimeString() : "";
+  const isInvestigate = inc.action_type === "investigate";
+  const report = inc.investigation_report;
+
+  let reportBlock = "";
+  if (report && !report.error) {
+    reportBlock = `
+      <div class="mt-2 border border-purple-900/50 rounded p-2 bg-purple-950/30 text-xs">
+        <div class="text-purple-300 font-semibold mb-1">🔍 Investigation report</div>
+        <div class="text-slate-300"><span class="text-purple-400">Root cause:</span> ${escapeHtml(report.root_cause_hypothesis)} — <span class="text-slate-100 font-medium">${escapeHtml(report.faulty_component)}</span> (conf ${(report.confidence * 100).toFixed(0)}%)</div>
+        <div class="text-slate-300 mt-1"><span class="text-purple-400">Fix:</span> ${escapeHtml(report.proposed_fix)}</div>
+        <div class="text-slate-300 mt-1"><span class="text-purple-400">Paging:</span> ${escapeHtml(report.page_team)}</div>
+        <div class="text-slate-400 mt-1 italic">${escapeHtml(report.summary || "")}</div>
+      </div>
+    `;
+  } else if (report && report.error) {
+    reportBlock = `<div class="mt-2 text-xs text-red-300">Investigation failed: ${escapeHtml(report.error)}</div>`;
+  }
+
   return `
     <div class="border border-slate-800 rounded-md p-3 hover:bg-slate-800/40">
       <div class="flex items-center gap-2 flex-wrap mb-1">
         <span class="text-xs text-slate-500">#${inc.id} · ${time}</span>
         ${badge(inc.status, s)}
         ${badge(inc.severity, sev)}
+        ${isInvestigate ? badge("investigate", "bg-purple-900/50 text-purple-300 border-purple-800") : ""}
         <span class="text-xs text-slate-300 font-medium">${inc.product}</span>
         <span class="text-xs text-slate-500">→ ${inc.owner_team}</span>
         <span class="text-xs text-slate-500 ml-auto">conf ${(inc.confidence * 100).toFixed(0)}%</span>
@@ -104,23 +158,30 @@ function renderIncident(inc) {
       <div class="text-sm font-mono text-slate-300 break-all">${escapeHtml(inc.log_line)}</div>
       <div class="text-xs text-slate-500 mt-1">${escapeHtml(inc.reasoning || "")}</div>
       ${inc.action_output ? `<pre class="mt-2 text-xs bg-slate-950 border border-slate-800 rounded p-2 whitespace-pre-wrap">${escapeHtml(inc.action_output)}</pre>` : ""}
+      ${reportBlock}
     </div>
   `;
 }
 
 function renderPending(inc) {
+  const isInvestigate = inc.action_type === "investigate";
+  const actionLabel = isInvestigate
+    ? `<div class="text-xs text-purple-300 mb-2">🔍 approving will launch investigator agent → fetch repo <code>rushikesh-thorat-nice/demo/incidents/${inc.scenario_slug}</code></div>`
+    : `<div class="text-xs bg-slate-950 border border-slate-800 rounded p-2 font-mono mb-3">${escapeHtml(inc.recommended_action || "")}</div>`;
+
   return `
-    <div class="border border-amber-900/40 rounded-md p-3 bg-slate-950/40">
+    <div class="border ${isInvestigate ? 'border-purple-900/60' : 'border-amber-900/40'} rounded-md p-3 bg-slate-950/40">
       <div class="flex items-center gap-2 flex-wrap mb-1">
         <span class="text-xs text-slate-500">#${inc.id}</span>
+        ${isInvestigate ? badge("investigate", "bg-purple-900/50 text-purple-300 border-purple-800") : ""}
         <span class="text-xs font-medium text-slate-200">${inc.product}</span>
         <span class="text-xs text-slate-500">→ ${inc.owner_team}</span>
       </div>
       <div class="text-xs font-mono text-slate-300 break-all mb-2">${escapeHtml((inc.log_line || "").slice(0, 200))}</div>
       <div class="text-xs text-slate-400 mb-2">${escapeHtml(inc.reasoning || "")}</div>
-      <div class="text-xs bg-slate-950 border border-slate-800 rounded p-2 font-mono mb-3">${escapeHtml(inc.recommended_action || "")}</div>
+      ${actionLabel}
       <div class="flex gap-2">
-        <button data-approve="${inc.id}" class="px-3 py-1 text-xs bg-emerald-700 hover:bg-emerald-600 rounded font-medium">Approve</button>
+        <button data-approve="${inc.id}" class="px-3 py-1 text-xs ${isInvestigate ? 'bg-purple-700 hover:bg-purple-600' : 'bg-emerald-700 hover:bg-emerald-600'} rounded font-medium">${isInvestigate ? 'Investigate' : 'Approve'}</button>
         <button data-reject="${inc.id}" class="px-3 py-1 text-xs bg-slate-700 hover:bg-slate-600 rounded font-medium">Reject</button>
       </div>
     </div>
@@ -170,24 +231,55 @@ document.addEventListener("click", async (e) => {
     await fetch(`/api/reject/${rejectId}`, { method: "POST" });
     refresh();
   }
+  if (e.target?.id === "clear-term") {
+    document.getElementById("terminal").innerHTML = "";
+  }
 });
 
 function connectWs() {
   const proto = location.protocol === "https:" ? "wss:" : "ws:";
   const ws = new WebSocket(`${proto}//${location.host}/ws`);
   const status = document.getElementById("ws-status");
-  ws.onopen = () => { status.textContent = "● live"; status.className = "text-xs px-2 py-1 rounded bg-emerald-900/60 text-emerald-300"; };
+  ws.onopen  = () => { status.textContent = "feed ● live"; status.className = "text-xs px-2 py-1 rounded bg-emerald-900/60 text-emerald-300"; };
   ws.onclose = () => {
-    status.textContent = "disconnected — retrying";
+    status.textContent = "feed: disconnected — retrying";
     status.className = "text-xs px-2 py-1 rounded bg-rose-900/60 text-rose-300";
     setTimeout(connectWs, 2000);
   };
   ws.onmessage = () => refresh();
 }
 
+function connectTermWs() {
+  const proto = location.protocol === "https:" ? "wss:" : "ws:";
+  const ws = new WebSocket(`${proto}//${location.host}/ws-term`);
+  const status = document.getElementById("ws-term-status");
+  const term = document.getElementById("terminal");
+  ws.onopen  = () => { status.textContent = "term ● live"; status.className = "text-xs px-2 py-1 rounded bg-purple-900/60 text-purple-300"; };
+  ws.onclose = () => {
+    status.textContent = "term: disconnected — retrying";
+    status.className = "text-xs px-2 py-1 rounded bg-rose-900/60 text-rose-300";
+    setTimeout(connectTermWs, 2000);
+  };
+  ws.onmessage = (evt) => {
+    try {
+      const e = JSON.parse(evt.data);
+      if (e.type !== "term") return;
+      const now = new Date().toLocaleTimeString();
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `<span class="lvl-ts">${now}</span><span class="lvl-${escapeHtml(e.level)}">[${escapeHtml(e.level)}]</span> <span class="lvl-${escapeHtml(e.level)}">${escapeHtml(e.text)}</span>`;
+      term.appendChild(row);
+      // keep last 300 lines
+      while (term.childElementCount > 300) term.removeChild(term.firstChild);
+      term.scrollTop = term.scrollHeight;
+    } catch (err) { /* ignore */ }
+  };
+}
+
 refresh();
 setInterval(refresh, 15000);
 connectWs();
+connectTermWs();
 </script>
 </body>
 </html>
