@@ -78,18 +78,21 @@ def main():
         iteration = 0
         while True:
             iteration += 1
-            # Every ~7th iteration, emit a complex multi-service burst so the
-            # investigator path gets exercised regularly during the demo.
-            if iteration % 7 == 0:
+            # Every ~4th iteration, emit a complex multi-service burst so the
+            # investigator path gets exercised during the demo.
+            if iteration % 4 == 0:
                 scenario_name, lines = random.choice(list(COMPLEX_SCENARIOS.items()))
                 print(f"[generator] emitting complex scenario: {scenario_name}")
                 for i, line in enumerate(lines):
                     _emit_line(fh, line)
-                    # Small stagger so lines land in the right order but the whole
-                    # burst arrives faster than a normal poll cycle.
+                    # Small stagger so lines land in order, but the whole
+                    # burst arrives together as one incident cluster.
                     if i < len(lines) - 1:
-                        time.sleep(0.4)
-                time.sleep(random.uniform(6, 10))
+                        time.sleep(0.3)
+                # Long pause AFTER a complex burst — gives the viewer time to
+                # read the pending card and click Investigate without more
+                # incidents piling up.
+                time.sleep(random.uniform(75, 100))
                 continue
 
             # Otherwise: 80% known simple, 20% novel.
@@ -99,7 +102,8 @@ def main():
                 line = random.choice(NOVEL_LINES)
             _emit_line(fh, line)
             print(f"[generator] emitted: {line[:120]}")
-            time.sleep(random.uniform(5, 12))
+            # Slower cadence: one incident every 60-90 seconds.
+            time.sleep(random.uniform(60, 90))
 
 
 if __name__ == "__main__":

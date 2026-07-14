@@ -6,9 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    /* Reserve bottom space for the fixed terminal so the last card is not hidden. */
+    body { padding-bottom: 320px; }
     /* Terminal styling */
     #terminal { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; }
     #terminal .row { padding: 1px 4px; }
+    /* Fixed terminal panel — never moves as the feed grows above it. */
+    #term-panel { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; box-shadow: 0 -10px 30px -10px rgba(0,0,0,0.7); }
+    #term-panel.collapsed #terminal { display: none; }
+    #term-panel.collapsed { box-shadow: none; }
+    body.term-collapsed { padding-bottom: 44px; }
     .lvl-fetch    { color: #7dd3fc; }
     .lvl-step     { color: #fde68a; font-weight: 600; }
     .lvl-info     { color: #cbd5e1; }
@@ -82,21 +89,27 @@
       </section>
     </div>
 
-    <!-- Investigator terminal -->
-    <section class="bg-slate-900 rounded-lg border border-purple-900/50 overflow-hidden">
+  </div>
+
+  <!-- Investigator terminal — fixed to viewport bottom so it never shifts as the feed grows -->
+  <section id="term-panel" class="bg-slate-900 border-t border-purple-900/50">
+    <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between px-4 py-2 bg-slate-950 border-b border-purple-900/40">
         <div class="flex items-center gap-2">
           <span class="inline-block w-2 h-2 bg-purple-400 rounded-full"></span>
           <h2 class="text-sm font-semibold text-purple-300">Investigator agent terminal</h2>
           <span class="text-xs text-slate-500">/ws-term</span>
         </div>
-        <button id="clear-term" class="text-xs text-slate-500 hover:text-slate-300">clear</button>
+        <div class="flex items-center gap-3">
+          <button id="clear-term" class="text-xs text-slate-500 hover:text-slate-300">clear</button>
+          <button id="toggle-term" class="text-xs text-slate-400 hover:text-slate-200 px-2 py-0.5 rounded bg-slate-800 border border-slate-700">▼ hide</button>
+        </div>
       </div>
       <div id="terminal" class="bg-slate-950 text-slate-200 p-3 h-64 overflow-y-auto">
-        <div class="text-slate-500 text-xs">Waiting for the investigator agent… click Approve on a "call-recording" or other investigate-type incident to see it work.</div>
+        <div class="text-slate-500 text-xs">Waiting for the investigator agent… click <span class="text-purple-300">Run Investigation</span> on a complex-incident card to see it work.</div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
 <script>
 const statusStyles = {
@@ -127,10 +140,21 @@ function renderIncident(inc) {
   const sev = severityStyles[inc.severity] || severityStyles.unknown;
   const time = inc.created_at ? new Date(inc.created_at).toLocaleTimeString() : "";
   const isInvestigate = inc.action_type === "investigate";
+  const isInvestigating = inc.status === "investigating";
   const report = inc.investigation_report;
 
   let reportBlock = "";
-  if (report && !report.error) {
+  if (isInvestigating) {
+    reportBlock = `
+      <div class="mt-2 border border-purple-700/60 rounded p-2 bg-purple-950/40 text-xs animate-pulse">
+        <div class="text-purple-200 font-semibold flex items-center gap-2">
+          <span class="inline-block w-2 h-2 bg-purple-400 rounded-full animate-ping"></span>
+          🔍 Investigator agent running…
+        </div>
+        <div class="text-slate-400 mt-1">Watch the Investigator terminal below for live progress.</div>
+      </div>
+    `;
+  } else if (report && !report.error) {
     reportBlock = `
       <div class="mt-2 border border-purple-900/50 rounded p-2 bg-purple-950/30 text-xs">
         <div class="text-purple-300 font-semibold mb-1">🔍 Investigation report</div>
@@ -138,6 +162,14 @@ function renderIncident(inc) {
         <div class="text-slate-300 mt-1"><span class="text-purple-400">Fix:</span> ${escapeHtml(report.proposed_fix)}</div>
         <div class="text-slate-300 mt-1"><span class="text-purple-400">Paging:</span> ${escapeHtml(report.page_team)}</div>
         <div class="text-slate-400 mt-1 italic">${escapeHtml(report.summary || "")}</div>
+        ${report.evidence && report.evidence.length ? `
+          <details class="mt-1 text-slate-400">
+            <summary class="cursor-pointer text-purple-400 text-[11px]">${report.evidence.length} pieces of evidence ▾</summary>
+            <ul class="mt-1 space-y-0.5 pl-3">
+              ${report.evidence.map(ev => `<li class="font-mono text-[11px] text-slate-400">• ${escapeHtml(ev)}</li>`).join("")}
+            </ul>
+          </details>
+        ` : ""}
       </div>
     `;
   } else if (report && report.error) {
@@ -145,14 +177,14 @@ function renderIncident(inc) {
   }
 
   return `
-    <div class="border border-slate-800 rounded-md p-3 hover:bg-slate-800/40">
+    <div class="border ${isInvestigate ? 'border-purple-900/30' : 'border-slate-800'} rounded-md p-3 hover:bg-slate-800/40">
       <div class="flex items-center gap-2 flex-wrap mb-1">
         <span class="text-xs text-slate-500">#${inc.id} · ${time}</span>
         ${badge(inc.status, s)}
         ${badge(inc.severity, sev)}
-        ${isInvestigate ? badge("investigate", "bg-purple-900/50 text-purple-300 border-purple-800") : ""}
-        <span class="text-xs text-slate-300 font-medium">${inc.product}</span>
-        <span class="text-xs text-slate-500">→ ${inc.owner_team}</span>
+        ${isInvestigate ? badge("🔍 complex", "bg-purple-900/50 text-purple-300 border-purple-800") : ""}
+        <span class="text-xs text-slate-300 font-medium">${escapeHtml(inc.product)}</span>
+        <span class="text-xs text-slate-500">→ ${escapeHtml(inc.owner_team)}</span>
         <span class="text-xs text-slate-500 ml-auto">conf ${(inc.confidence * 100).toFixed(0)}%</span>
       </div>
       <div class="text-sm font-mono text-slate-300 break-all">${escapeHtml(inc.log_line)}</div>
@@ -165,23 +197,64 @@ function renderIncident(inc) {
 
 function renderPending(inc) {
   const isInvestigate = inc.action_type === "investigate";
-  const actionLabel = isInvestigate
-    ? `<div class="text-xs text-purple-300 mb-2">🔍 approving will launch investigator agent → fetch repo <code>rushikesh-thorat-nice/demo/incidents/${inc.scenario_slug}</code></div>`
-    : `<div class="text-xs bg-slate-950 border border-slate-800 rounded p-2 font-mono mb-3">${escapeHtml(inc.recommended_action || "")}</div>`;
 
+  if (isInvestigate) {
+    // Distinctive card for complex multi-component investigations.
+    return `
+      <div class="border-2 border-purple-700/60 rounded-md bg-gradient-to-br from-purple-950/40 to-slate-950/60 overflow-hidden">
+        <div class="bg-purple-900/40 border-b border-purple-700/50 px-3 py-1.5 flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs font-semibold text-purple-200">
+            <span>🔍</span>
+            <span>COMPLEX INCIDENT — needs investigation</span>
+          </div>
+          <span class="text-[10px] uppercase tracking-wider text-purple-300 bg-purple-900/60 px-1.5 py-0.5 rounded">multi-component</span>
+        </div>
+        <div class="p-3">
+          <div class="flex items-center gap-2 flex-wrap mb-2">
+            <span class="text-xs text-slate-500">#${inc.id}</span>
+            <span class="text-xs font-medium text-slate-200">${escapeHtml(inc.product)}</span>
+            <span class="text-xs text-slate-500">→ ${escapeHtml(inc.owner_team)}</span>
+            <span class="text-xs text-slate-500 ml-auto">match ${(inc.confidence * 100).toFixed(0)}%</span>
+          </div>
+          <div class="text-xs font-mono text-slate-300 break-all mb-2 bg-slate-950/50 rounded p-1.5">${escapeHtml((inc.log_line || "").slice(0, 220))}</div>
+          <div class="text-xs text-slate-400 mb-3 italic">${escapeHtml(inc.reasoning || "")}</div>
+
+          <div class="text-[11px] text-purple-200 border border-purple-800/40 rounded p-2 bg-purple-950/30 mb-3">
+            <div class="font-semibold mb-1">Clicking <span class="text-purple-100">Run Investigation</span> will:</div>
+            <ol class="list-decimal list-inside space-y-0.5 text-slate-300">
+              <li>Fetch <code class="text-purple-200">rushikesh-thorat-nice/demo/incidents/${escapeHtml(inc.scenario_slug || '?')}</code> from GitHub</li>
+              <li>Correlate the last ~40 log lines against the runbook hypotheses</li>
+              <li>Ask Claude Sonnet 4.6 to identify the faulty component</li>
+              <li>Auto-page the correct team (may differ from initial routing)</li>
+            </ol>
+            <div class="mt-1 text-slate-400">Watch the <span class="text-purple-200">Investigator terminal</span> below for live progress.</div>
+          </div>
+
+          <div class="flex gap-2">
+            <button data-approve="${inc.id}" class="px-4 py-1.5 text-xs bg-purple-600 hover:bg-purple-500 rounded font-semibold flex items-center gap-1.5">
+              <span>🔍</span><span>Run Investigation</span>
+            </button>
+            <button data-reject="${inc.id}" class="px-3 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 rounded font-medium">Dismiss</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Simple execute-type card (unchanged behavior)
   return `
-    <div class="border ${isInvestigate ? 'border-purple-900/60' : 'border-amber-900/40'} rounded-md p-3 bg-slate-950/40">
+    <div class="border border-amber-900/40 rounded-md p-3 bg-slate-950/40">
       <div class="flex items-center gap-2 flex-wrap mb-1">
         <span class="text-xs text-slate-500">#${inc.id}</span>
-        ${isInvestigate ? badge("investigate", "bg-purple-900/50 text-purple-300 border-purple-800") : ""}
-        <span class="text-xs font-medium text-slate-200">${inc.product}</span>
-        <span class="text-xs text-slate-500">→ ${inc.owner_team}</span>
+        <span class="text-[10px] uppercase tracking-wider text-amber-300 bg-amber-900/40 px-1.5 py-0.5 rounded">run command</span>
+        <span class="text-xs font-medium text-slate-200">${escapeHtml(inc.product)}</span>
+        <span class="text-xs text-slate-500">→ ${escapeHtml(inc.owner_team)}</span>
       </div>
       <div class="text-xs font-mono text-slate-300 break-all mb-2">${escapeHtml((inc.log_line || "").slice(0, 200))}</div>
       <div class="text-xs text-slate-400 mb-2">${escapeHtml(inc.reasoning || "")}</div>
-      ${actionLabel}
+      <div class="text-xs bg-slate-950 border border-slate-800 rounded p-2 font-mono mb-3">${escapeHtml(inc.recommended_action || "")}</div>
       <div class="flex gap-2">
-        <button data-approve="${inc.id}" class="px-3 py-1 text-xs ${isInvestigate ? 'bg-purple-700 hover:bg-purple-600' : 'bg-emerald-700 hover:bg-emerald-600'} rounded font-medium">${isInvestigate ? 'Investigate' : 'Approve'}</button>
+        <button data-approve="${inc.id}" class="px-3 py-1 text-xs bg-emerald-700 hover:bg-emerald-600 rounded font-medium">Approve &amp; run</button>
         <button data-reject="${inc.id}" class="px-3 py-1 text-xs bg-slate-700 hover:bg-slate-600 rounded font-medium">Reject</button>
       </div>
     </div>
@@ -233,6 +306,13 @@ document.addEventListener("click", async (e) => {
   }
   if (e.target?.id === "clear-term") {
     document.getElementById("terminal").innerHTML = "";
+  }
+  if (e.target?.id === "toggle-term") {
+    const panel = document.getElementById("term-panel");
+    const btn = document.getElementById("toggle-term");
+    const collapsed = panel.classList.toggle("collapsed");
+    document.body.classList.toggle("term-collapsed", collapsed);
+    btn.textContent = collapsed ? "▲ show" : "▼ hide";
   }
 });
 
