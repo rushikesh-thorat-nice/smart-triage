@@ -113,7 +113,7 @@ async def _handle_log_line(line: str) -> None:
     await notifier.emit({"type": "incident", "incident": _incident_to_dict(inc)})
 
     if status == "alerted_new":
-        asyncio.create_task(emailer.notify_new_incident(_incident_to_dict(inc)))
+        await emailer.notify_new_incident(_incident_to_dict(inc))
 
 
 async def _run_investigation(incident_id: int, scenario_slug: str, log_line: str) -> dict:
@@ -294,7 +294,7 @@ async def approve(incident_id: int):
             payload = _incident_to_dict(row)
 
         await notifier.emit({"type": "approval_result", "incident": payload})
-        asyncio.create_task(emailer.notify_investigation_done(payload))
+        await emailer.notify_investigation_done(payload)
         return payload
 
     # Default: execute the shell command.

@@ -140,11 +140,14 @@ async def notify_new_incident(inc: dict[str, Any]) -> None:
 
 
 async def notify_investigation_done(inc: dict[str, Any]) -> None:
+    print(f"[emailer] notify_investigation_done called for incident #{inc.get('id')}")
     if not _is_configured():
+        print("[emailer] not configured — skipping")
         return
 
     report: dict = inc.get("investigation_report") or {}
     if not report or "error" in report:
+        print(f"[emailer] no valid report — report={report}")
         return
 
     page_team = report.get("page_team") or inc.get("owner_team", "")
