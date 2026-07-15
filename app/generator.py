@@ -44,6 +44,34 @@ NOVEL_LINES = [
 # line is what the KB entry matches against — its scenario_slug then tells the
 # investigator agent which context folder to fetch.
 COMPLEX_SCENARIOS = {
+    "api-gateway-outage": [
+        "auth-service WARN upstream DB latency=1200ms (threshold=200ms)",
+        "auth-service ERROR upstream DB connection timed out after 2000ms",
+        "auth-service ERROR token validation failed: DB unreachable",
+        "api-gateway ERROR upstream auth-service returned 503 for token verify request",
+        "api-gateway ERROR JWT verify error: auth-service unavailable, returning 503 to client",
+        "auth-service ERROR OOMKilled: container exceeded memory limit 512Mi",
+        "auth-service INFO restarting (attempt 1/5) CrashLoopBackOff",
+        "api-gateway ERROR all upstream auth-service instances unhealthy, no healthy upstream",
+        "api-gateway ERROR 503 Service Unavailable - auth-service down - tenant=acme-corp",
+        "api-gateway WARN elevated 5xx rate: 98% of requests returning 503",
+        # Trigger line
+        "operator-alert tenant=acme-corp reports API completely down ticket=INC-9201 api-gateway 5xx storm all tenants affected",
+    ],
+    "db-connection-storm": [
+        "pgbouncer WARN pool stats: active=20/20 idle=0 waiting=12",
+        "orders-api WARN HikariPool-1 active=20 idle=0 waiting=8 connectionTimeout approaching",
+        "pgbouncer ERROR no more connections allowed (pool_size=20 exhausted) client=orders-api",
+        "orders-api ERROR HikariPool-1 - Connection is not available, request timed out after 30000ms",
+        "pgbouncer ERROR restarting: out of memory",
+        "postgres FATAL: too many connections (max_connections=200 reached)",
+        "orders-api ERROR HikariPool-1 - Connection is not available, request timed out after 30000ms (pool exhausted)",
+        "postgres FATAL: remaining connection slots reserved for non-replication superuser connections",
+        "payments-service ERROR SQLTransientConnectionException: unable to acquire connection from pool",
+        "auth-service ERROR DB connection failed: too many connections for role auth_user",
+        # Trigger line
+        "operator-alert customer=globex-inc reports orders failing with 500 errors ticket=INC-9205 database connection storm pgbouncer down",
+    ],
     "call-recording-stopped": [
         "media-server INFO peer=recorder-3 packets_fwd=8421 rtcp_ok",
         "call-recorder INFO session=sess_abc123 asr_worker=w4 frame_count=1204",
@@ -82,16 +110,18 @@ def main():
         # pending approval, alerted new, investigate).
         print("[generator] emitting startup burst of 10 incidents")
         startup_plan = [
-            ("known", KNOWN_LINES[0]),   # payment-service OOM
-            ("known", KNOWN_LINES[2]),   # log-shipper disk full (auto-resolve)
-            ("known", KNOWN_LINES[1]),   # orders-api HikariPool
-            ("novel", NOVEL_LINES[0]),   # elasticsearch yellow
-            ("known", KNOWN_LINES[4]),   # cache-service redis eviction
-            ("known", KNOWN_LINES[3]),   # auth-gateway TLS
-            ("complex", "call-recording-stopped"),  # <-- multi-service burst
-            ("known", KNOWN_LINES[7]),   # reports-cron hung
-            ("novel", NOVEL_LINES[2]),   # ml-inference checksum mismatch
-            ("known", KNOWN_LINES[6]),   # inventory-service 502s
+            ("known", KNOWN_LINES[0]),        # payment-service OOM
+            ("known", KNOWN_LINES[2]),        # log-shipper disk full (auto-resolve)
+            ("known", KNOWN_LINES[1]),        # orders-api HikariPool
+            ("novel", NOVEL_LINES[0]),        # elasticsearch yellow
+            ("known", KNOWN_LINES[4]),        # cache-service redis eviction
+            ("known", KNOWN_LINES[3]),        # auth-gateway TLS
+            ("complex", "call-recording-stopped"),   # multi-service: storage
+            ("known", KNOWN_LINES[7]),        # reports-cron hung
+            ("novel", NOVEL_LINES[2]),        # ml-inference checksum mismatch
+            ("complex", "api-gateway-outage"),       # multi-service: auth + gateway
+            ("known", KNOWN_LINES[6]),        # inventory-service 502s
+            ("complex", "db-connection-storm"),      # multi-service: DB pool
         ]
         for kind, payload in startup_plan:
             if kind == "complex":

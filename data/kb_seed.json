@@ -99,5 +99,31 @@
     "resolution_command": null,
     "resolution_summary": "Fetch investigation context from the incident-knowledge repo, correlate logs across all 3 services, and identify which component is faulty before paging the owner.",
     "auto_execute": false
+  },
+  {
+    "id": "kb-010",
+    "product": "api-gateway",
+    "owner_team": "platform-oncall",
+    "severity": "critical",
+    "pattern_description": "API gateway returning 5xx to all tenants — spans api-gateway, auth-service, config-service. Root cause could be auth-service down, TLS cert issue, bad config push, OOM, or DDoS.",
+    "symptoms": "api-gateway 503 Service Unavailable no healthy upstream JWT verify error auth-service unavailable token validation failed upstream connect error 5xx storm all tenants affected CrashLoopBackOff",
+    "action_type": "investigate",
+    "scenario_slug": "api-gateway-outage",
+    "resolution_command": null,
+    "resolution_summary": "Investigate across api-gateway, auth-service, and config-service to identify root cause before paging.",
+    "auto_execute": false
+  },
+  {
+    "id": "kb-011",
+    "product": "orders-api",
+    "owner_team": "dba-oncall",
+    "severity": "critical",
+    "pattern_description": "Database connection storm — pgbouncer down or pool exhausted causing cascading failures across orders-api, payments-service, auth-service.",
+    "symptoms": "HikariPool-1 Connection is not available request timed out pool exhausted pgbouncer restarting FATAL too many connections SQLTransientConnectionException remaining connection slots reserved pgbouncer OOM",
+    "action_type": "investigate",
+    "scenario_slug": "db-connection-storm",
+    "resolution_command": null,
+    "resolution_summary": "Investigate pgbouncer, postgres, and orders-api pool config to identify root cause of connection exhaustion.",
+    "auto_execute": false
   }
 ]
