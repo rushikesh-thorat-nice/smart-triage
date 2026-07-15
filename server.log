@@ -1,0 +1,1955 @@
+INFO:     Started server process [24444]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+C:\Users\rushikeshth\Desktop\smart triage\app\generator.py:65: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  ts = datetime.utcnow().isoformat(timespec="seconds") + "Z"
+[main] started log generator pid=28652
+INFO:     127.0.0.1:52757 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57786 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57786 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63163 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63163 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65196 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:64665 - "WebSocket /ws-term" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63163 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57786 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63003 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57786 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64762 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:55399 - "WebSocket /ws-term" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:55911 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55911 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58525 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55911 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55911 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63301 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:51163 - "WebSocket /ws-term" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:51591 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50571 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50774 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51591 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50774 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50571 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=investigating product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#175] info: ??? investigation started for incident #175 ???
+[term#175] info: scenario: call-recording-stopped
+[term#175] info: trigger:  2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#175] step: step 1/3: fetching incident context from GitHub
+[term#175] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/incident.yaml
+INFO:     127.0.0.1:50401 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52956 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51396 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50401 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51396 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52956 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54257 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58850 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55234 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64008 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55247 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54296 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52679 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56300 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56245 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56245 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56300 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52679 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#175] error: network error fetching incidents/call-recording-stopped/incident.yaml: 
+[term#175] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/runbook.md
+[term#175] error: network error fetching incidents/call-recording-stopped/runbook.md: 
+[term#175] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/code-references.md
+INFO:     127.0.0.1:60502 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64956 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58475 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59878 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65437 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64411 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59878 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65437 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64411 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#175] error: network error fetching incidents/call-recording-stopped/code-references.md: 
+[term#175] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/media-server.md
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO:     127.0.0.1:61773 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62710 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50527 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51664 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49714 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57675 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57675 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49714 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51664 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#175] error: network error fetching incidents/call-recording-stopped/components/media-server.md: 
+[term#175] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/call-recorder.md
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 1247.61it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 4869.02it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 6953.82it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 6763.63it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3350.29it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s][ALoading weights: 100%|##########| 103/103 [00:00<00:00, 2122.44it/s]
+Loading weights: 100%|##########| 103/103 [00:00<00:00, 2390.14it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3313.39it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3549.09it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s][ALoading weights: 100%|##########| 103/103 [00:00<00:00, 1506.25it/s]
+Loading weights: 100%|##########| 103/103 [00:00<00:00, 1442.52it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3906.30it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 4059.70it/s]
+INFO:     127.0.0.1:57698 - "GET /api/pending HTTP/1.1" 200 OK
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 3806.32it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 6574.04it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 9684.23it/s]
+[triage] status=pending_approval product=orders-api team=orders-oncall :: 2026-07-14T15:20:45Z ERROR orders-api - HikariPool-1 - Connection is not available, request timed ou
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:21:05Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=checkout-web team=checkout-oncall :: 2026-07-14T15:21:22Z ERROR checkout-web - readiness probe failed HTTP 503; deployment rollout stuck 
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:21:54Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:51638 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=log-shipper team=sre :: 2026-07-14T15:20:42Z WARN log-shipper - filebeat harvester: write /var/log/app.log: no space left on
+[term#175] fetch:   ? 200 OK (1867 bytes)
+[term#175] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/file-server.md
+[triage] status=auto_resolved product=log-shipper team=sre :: 2026-07-14T15:21:07Z WARN log-shipper - filebeat harvester: write /var/log/app.log: no space left on
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#175] fetch:   ? 200 OK (1534 bytes)
+[term#175] info: loaded 2 context files, 3401 bytes total
+[term#175] step: step 2/3: correlating log evidence with runbook hypotheses
+[term#175] info: prompt assembled: 7391 chars, 33 context log lines
+[term#175] step: step 3/3: asking Claude to diagnose
+[term#175] claude: model: us.anthropic.claude-sonnet-4-6
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=investigating product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#168] info: ??? investigation started for incident #168 ???
+[term#168] info: scenario: call-recording-stopped
+[term#168] info: trigger:  2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#168] step: step 1/3: fetching incident context from GitHub
+[term#168] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/incident.yaml
+INFO:     127.0.0.1:59587 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#168] fetch:   ? 200 OK (2964 bytes)
+[term#168] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/runbook.md
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#168] fetch:   ? 200 OK (2771 bytes)
+[term#168] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/code-references.md
+[term#168] fetch:   ? 200 OK (1072 bytes)
+[term#168] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/media-server.md
+[term#168] fetch:   ? 200 OK (1488 bytes)
+[term#168] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/call-recorder.md
+[term#168] fetch:   ? 200 OK (1867 bytes)
+[term#168] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/file-server.md
+[term#168] fetch:   ? 200 OK (1534 bytes)
+[term#168] info: loaded 6 context files, 11696 bytes total
+[term#168] step: step 2/3: correlating log evidence with runbook hypotheses
+[term#168] info: prompt assembled: 16066 chars, 35 context log lines
+[term#168] step: step 3/3: asking Claude to diagnose
+[term#168] claude: model: us.anthropic.claude-sonnet-4-6
+[triage] status=alerted_new product=ml-inference team=sre-general :: 2026-07-14T15:21:02Z ERROR ml-inference - model artifact checksum mismatch for model_v42.bin; refusi
+INFO:     127.0.0.1:57183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:20:56Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:51129 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=auth-gateway team=platform-security :: 2026-07-14T15:20:52Z FATAL auth-gateway - tls: expired certificate: x509: certificate has expired or
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/pending HTTP/1.1" 200 OK
+[triage] status=pending_approval product=auth-gateway team=platform-security :: 2026-07-14T15:22:08Z FATAL auth-gateway - tls: expired certificate: x509: certificate has expired or
+INFO:     127.0.0.1:56551 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=reports-cron team=data-platform :: 2026-07-14T15:21:00Z WARN reports-cron - job running for 3600s (expected 600s), no heartbeat, markin
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51638 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:20:56Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63501 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=search-service team=sre-general :: 2026-07-14T15:20:47Z ERROR search-service - elasticsearch cluster went yellow, replica shards unassi
+INFO:     127.0.0.1:57183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server team=voice-platform-oncall :: 2026-07-14T15:20:57Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/pending HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:57183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+[triage] status=pending_approval product=file-server team=voice-platform-oncall :: 2026-07-14T15:20:56Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:59587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=payment-service team=payments-oncall :: 2026-07-14T15:20:40Z ERROR payment-service - java.lang.OutOfMemoryError: Java heap space at com.acme
+INFO:     127.0.0.1:57183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56981 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server team=voice-platform-oncall :: 2026-07-14T15:20:57Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:56551 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:20:56Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:64753 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51129 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51320 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52429 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64753 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] NEW incident #190 — ml-inference (UNKNOWN)
+[term#175] verdict: root cause: h3-file-server-corrupt-full — file-server
+[term#175] verdict: confidence: 0.95
+[term#175] verdict: paging: storage-oncall
+[term#175] verdict: fix: Page storage-oncall immediately per runbook escalation rules. Steps: (1) Verify volume usage with `df -h /var/nfs/recordings` on the NFS server. (2) Identify and remove stale/orphaned .tmp files or old recording segments to free immediate space: `find /var/nfs/recordings -name '*.tmp' -mtime +1 -delete`. (3) If immediate cleanup is insufficient, expand the thin-provisioned volume via the storage-platform/nfs-provisioner Ansible playbook (volume expansion runbook section). (4) Once space is freed, verify call-recorder pods can resume writes and check that transcription queue depth drops below soft-limit 4000. (5) Confirm media-server forwarding resumes for peer=recorder-3. Do NOT attempt NFS-level remediation from the recorder/voice team side.
+[term#175] evidence: • 2026-07-14T15:20:55Z file-server WARN disk_usage=/var/nfs/recordings 95% (allocated 9.5T / 10T)
+[term#175] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#175] evidence: • 2026-07-14T15:20:56Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#175] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#175] evidence: • 2026-07-14T15:20:57Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#175] evidence: • 2026-07-14T15:20:57Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+[term#175] evidence: • 2026-07-14T15:20:56Z call-recorder WARN transcription queue depth=4123 (soft-limit 4000)
+[term#175] info: ??? investigation complete ???
+[approval] incident #175 ? investigated
+[emailer] notify_investigation_done called for incident #175
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] NEW incident #197 — search-service (UNKNOWN)
+INFO:     127.0.0.1:55282 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60004 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53379 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60004 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53379 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53379 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60004 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51984 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59255 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59255 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51984 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60004 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53379 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=search-service team=sre-general :: 2026-07-14T15:22:31Z ERROR search-service - elasticsearch cluster went yellow, replica shards unassi
+INFO:     127.0.0.1:55630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51984 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60004 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53379 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59255 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60474 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60004 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#168] verdict: root cause: h3-file-server-corrupt-full — file-server
+[term#168] verdict: confidence: 0.97
+[term#168] verdict: paging: storage-oncall
+[term#168] verdict: fix: 1. Immediately page storage-oncall via PagerDuty channel 'voice-platform'. 2. Follow runbook storage-platform/runbooks/nfs-disk-full.md: identify and remove stale/tmp files on /var/nfs/recordings (e.g., `find /var/nfs/recordings -name '*.tmp' -mtime +1 -delete`) to free space. 3. If cleanup is insufficient, request emergency volume expansion for the 10TB thin-provisioned volume. 4. Once space is freed, verify NFS mounts on recorder pods are healthy (`showmount -e <file-server>` and `df -h /mnt/recordings` from a recorder pod). 5. Do NOT restart call-recorder pods until disk space is confirmed free — per runbook guidance, restarting does not free disk and drops in-flight calls. 6. Monitor `call_recorder.write.errors_total` and `node_filesystem_avail_bytes` metrics to confirm recovery.
+[term#168] evidence: • 2026-07-14T15:20:55Z file-server WARN disk_usage=/var/nfs/recordings 95% (allocated 9.5T / 10T)
+[term#168] evidence: • 2026-07-14T15:20:56Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#168] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#168] evidence: • 2026-07-14T15:20:57Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#168] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#168] evidence: • 2026-07-14T15:20:57Z media-server WARN peer=recorder-3 forwarding stalled buffer=812 (recorder backpressure caused by failed writes)
+[term#168] evidence: • 2026-07-14T15:20:57Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries (downstream cascade from disk-full)
+[term#168] info: ??? investigation complete ???
+[approval] incident #168 ? investigated
+[emailer] notify_investigation_done called for incident #168
+INFO:     127.0.0.1:60004 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60474 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59255 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51984 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51984 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60474 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60004 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] Investigation complete #175 — call-recorder: file-server (95% conf)
+INFO:     127.0.0.1:64186 - "POST /api/approve/175 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64186 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51984 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59255 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] NEW incident #206 — search-service (UNKNOWN)
+INFO:     127.0.0.1:59255 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51984 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64186 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51922 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53692 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51922 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51922 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53692 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51922 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] Investigation complete #168 — call-recorder: file-server (97% conf)
+INFO:     127.0.0.1:64636 - "POST /api/approve/168 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62353 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59533 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60834 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61828 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59860 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61828 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61828 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59860 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61828 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=checkout-web team=checkout-oncall :: 2026-07-14T15:23:06Z ERROR checkout-web - readiness probe failed HTTP 503; deployment rollout stuck 
+INFO:     127.0.0.1:61828 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59860 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58739 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59860 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54451 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58739 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61828 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54451 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54451 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65080 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65080 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65080 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65080 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65080 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65080 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55272 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56572 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54288 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54288 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56572 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55272 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55360 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55360 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:38Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:55360 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59556 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:39Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:59556 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59499 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55446 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55360 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62948 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55044 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=file-server team=voice-platform-oncall :: 2026-07-14T15:23:38Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:62589 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62948 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55044 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55360 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59556 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59499 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55446 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:40Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:59556 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62280 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55360 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59499 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55446 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59499 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55446 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55446 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59499 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62589 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59499 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55446 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60118 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:51202 - "WebSocket /ws-term" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:61608 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=investigating product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:40Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+[term#221] info: ??? investigation started for incident #221 ???
+[term#221] info: scenario: call-recording-stopped
+[term#221] info: trigger:  2026-07-14T15:23:40Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+[term#221] step: step 1/3: fetching incident context from GitHub
+[term#221] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/incident.yaml
+INFO:     127.0.0.1:56170 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#221] fetch:   ? 200 OK (2964 bytes)
+[term#221] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/runbook.md
+[term#221] fetch:   ? 200 OK (2771 bytes)
+[term#221] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/code-references.md
+[term#221] fetch:   ? 200 OK (1072 bytes)
+[term#221] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/media-server.md
+[term#221] fetch:   ? 200 OK (1488 bytes)
+[term#221] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/call-recorder.md
+INFO:     127.0.0.1:55770 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60504 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#221] fetch:   ? 200 OK (1867 bytes)
+[term#221] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/file-server.md
+[term#221] fetch:   ? 200 OK (1534 bytes)
+[term#221] info: loaded 6 context files, 11696 bytes total
+[term#221] step: step 2/3: correlating log evidence with runbook hypotheses
+[term#221] info: prompt assembled: 16506 chars, 40 context log lines
+[term#221] step: step 3/3: asking Claude to diagnose
+[term#221] claude: model: us.anthropic.claude-sonnet-4-6
+[triage] status=auto_resolved product=reports-cron team=data-platform :: 2026-07-14T15:24:03Z WARN reports-cron - job running for 3600s (expected 600s), no heartbeat, markin
+INFO:     127.0.0.1:56170 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60504 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55770 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=auth-gateway team=platform-security :: 2026-07-14T15:24:08Z FATAL auth-gateway - tls: expired certificate: x509: certificate has expired or
+INFO:     127.0.0.1:52500 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56170 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55770 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52500 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62858 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61325 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#221] verdict: root cause: h3-file-server-corrupt-full — file-server
+[term#221] verdict: confidence: 0.97
+[term#221] verdict: paging: storage-oncall
+[term#221] verdict: fix: 1. Immediately page storage-oncall via PagerDuty channel 'voice-platform'. 2. Following runbook section 3 and storage-platform/runbooks/nfs-disk-full.md: identify and remove stale/tmp files on /var/nfs/recordings (e.g. `find /var/nfs/recordings -name '*.tmp' -mtime +1 -delete`) to free space. 3. Coordinate with storage-oncall to expand the NFS volume or thin-provision additional capacity if tmp cleanup is insufficient. 4. Once space is freed, verify NFS writes succeed: `touch /mnt/recordings/test_write && rm /mnt/recordings/test_write` from a recorder pod. 5. Do NOT restart call-recorder pods until disk space is confirmed free — restarting will drop in-flight calls without fixing the underlying issue. 6. Monitor call-recorder TranscriptWriter errors and file-server disk_usage metric to confirm recovery.
+[term#221] evidence: • 2026-07-14T15:20:55Z file-server WARN disk_usage=/var/nfs/recordings 95% (allocated 9.5T / 10T)
+[term#221] evidence: • 2026-07-14T15:20:56Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#221] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#221] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#221] evidence: • 2026-07-14T15:20:57Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#221] evidence: • 2026-07-14T15:20:57Z media-server WARN peer=recorder-3 forwarding stalled buffer=812
+[term#221] evidence: • 2026-07-14T15:20:57Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+[term#221] evidence: • 2026-07-14T15:23:38Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#221] evidence: • 2026-07-14T15:23:40Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#221] evidence: • 2026-07-14T15:21:07Z WARN log-shipper - filebeat harvester: write /var/log/app.log: no space left on device (disk 100% full)
+[term#221] info: ??? investigation complete ???
+[approval] incident #221 ? investigated
+[emailer] notify_investigation_done called for incident #221
+INFO:     127.0.0.1:55254 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57907 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50211 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55254 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55254 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50211 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57907 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50211 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57907 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57907 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50211 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57907 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50211 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53231 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59826 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52995 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59826 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] Investigation complete #221 — media-server/call-recorder: file-server (97% conf)
+INFO:     127.0.0.1:61608 - "POST /api/approve/221 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59696 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49318 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59696 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49318 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49318 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59696 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49318 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59696 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61608 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57825 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57825 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=investigating product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:38Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+[term#215] info: ??? investigation started for incident #215 ???
+[term#215] info: scenario: call-recording-stopped
+[term#215] info: trigger:  2026-07-14T15:23:38Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#215] step: step 1/3: fetching incident context from GitHub
+[term#215] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/incident.yaml
+INFO:     127.0.0.1:51546 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61544 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61544 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61544 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#215] fetch:   ? 200 OK (2964 bytes)
+[term#215] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/runbook.md
+[term#215] fetch:   ? 200 OK (2771 bytes)
+[term#215] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/code-references.md
+[term#215] fetch:   ? 200 OK (1072 bytes)
+[term#215] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/media-server.md
+[term#215] fetch:   ? 200 OK (1488 bytes)
+[term#215] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/call-recorder.md
+[term#215] fetch:   ? 200 OK (1867 bytes)
+[term#215] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/file-server.md
+[term#215] fetch:   ? 200 OK (1534 bytes)
+[term#215] info: loaded 6 context files, 11696 bytes total
+[term#215] step: step 2/3: correlating log evidence with runbook hypotheses
+[term#215] info: prompt assembled: 16598 chars, 40 context log lines
+[term#215] step: step 3/3: asking Claude to diagnose
+[term#215] claude: model: us.anthropic.claude-sonnet-4-6
+[triage] status=pending_approval product=file-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:05Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:05Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:65407 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61544 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53635 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61979 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:06Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:64579 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61544 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61979 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53635 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61544 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53635 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61979 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64579 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64579 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64579 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:07Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:49154 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53635 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61544 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61979 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64579 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49154 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=billing-worker team=sre-general :: 2026-07-14T15:25:15Z WARN billing-worker - stripe webhook signature validation failed for event evt_
+INFO:     127.0.0.1:65492 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65227 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62411 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65407 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51931 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51779 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51931 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#215] verdict: root cause: h3-file-server-corrupt-full — file-server
+[term#215] verdict: confidence: 0.97
+[term#215] verdict: paging: storage-oncall
+[term#215] verdict: fix: Immediately page storage-oncall via PagerDuty voice-platform channel. Storage-oncall should follow runbook storage-platform/runbooks/nfs-disk-full.md: (1) SSH to the NFS server and run 'df -h /var/nfs/recordings' to confirm 100% utilization. (2) Identify and remove stale .tmp files: 'find /var/nfs/recordings -name "*.tmp" -mtime +1 -delete' (matches the 2026-05-14 past incident pattern). (3) If that is insufficient, coordinate emergency volume expansion via the storage provisioner (Ansible: storage-platform/nfs-provisioner). (4) After space is freed, verify call-recorder pods resume writing — check 'call_recorder.write.errors_total' metric drops to zero. Do NOT restart call-recorder pods before disk space is freed, as restarting does not free disk and will drop in-flight calls.
+[term#215] evidence: • 2026-07-14T15:20:57Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#215] evidence: • 2026-07-14T15:23:40Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#215] evidence: • 2026-07-14T15:20:56Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#215] evidence: • 2026-07-14T15:23:38Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#215] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#215] evidence: • 2026-07-14T15:23:38Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#215] evidence: • 2026-07-14T15:20:56Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#215] evidence: • 2026-07-14T15:23:39Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#215] evidence: • 2026-07-14T15:20:56Z call-recorder WARN transcription queue depth=4123 (soft-limit 4000)
+[term#215] evidence: • 2026-07-14T15:20:57Z media-server WARN peer=recorder-3 forwarding stalled buffer=812
+[term#215] evidence: • 2026-07-14T15:20:57Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+[term#215] evidence: • 2026-07-14T15:21:07Z WARN log-shipper - filebeat harvester: write /var/log/app.log: no space left on device (disk 100% full)
+[term#215] info: ??? investigation complete ???
+[approval] incident #215 ? investigated
+[emailer] notify_investigation_done called for incident #215
+INFO:     127.0.0.1:51931 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51779 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57739 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53614 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51244 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62228 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57739 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51779 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51931 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57739 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51779 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51931 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] NEW incident #242 — billing-worker (UNKNOWN)
+INFO:     127.0.0.1:51931 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51779 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57739 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58808 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55072 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60800 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58808 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55072 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58808 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] Investigation complete #215 — call-recorder: file-server (97% conf)
+INFO:     127.0.0.1:57825 - "POST /api/approve/215 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57825 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55072 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60800 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60800 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55072 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57825 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55072 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57825 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60800 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=investigating product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:05Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+[term#230] info: ??? investigation started for incident #230 ???
+[term#230] info: scenario: call-recording-stopped
+[term#230] info: trigger:  2026-07-14T15:25:05Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#230] step: step 1/3: fetching incident context from GitHub
+[term#230] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/incident.yaml
+INFO:     127.0.0.1:62937 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50979 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62937 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#230] fetch:   ? 200 OK (2964 bytes)
+[term#230] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/runbook.md
+[term#230] fetch:   ? 200 OK (2771 bytes)
+[term#230] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/code-references.md
+[term#230] fetch:   ? 200 OK (1072 bytes)
+[term#230] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/media-server.md
+[term#230] fetch:   ? 200 OK (1488 bytes)
+[term#230] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/call-recorder.md
+INFO:     127.0.0.1:51955 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55817 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62656 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#230] fetch:   ? 200 OK (1867 bytes)
+[term#230] fetch: GET https://raw.githubusercontent.com/rushikesh-thorat-nice/demo/main/incidents/call-recording-stopped/components/file-server.md
+INFO:     127.0.0.1:51955 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62656 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55817 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51955 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55817 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62656 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#230] fetch:   ? 200 OK (1534 bytes)
+[term#230] info: loaded 6 context files, 11696 bytes total
+[term#230] step: step 2/3: correlating log evidence with runbook hypotheses
+[term#230] info: prompt assembled: 16658 chars, 40 context log lines
+[term#230] step: step 3/3: asking Claude to diagnose
+[term#230] claude: model: us.anthropic.claude-sonnet-4-6
+INFO:     127.0.0.1:55817 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62656 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51955 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62685 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "GET /api/metrics HTTP/1.1" 200 OK
+[term#230] verdict: root cause: h3-file-server-corrupt-full — file-server
+[term#230] verdict: confidence: 0.97
+[term#230] verdict: paging: storage-oncall
+[term#230] verdict: fix: Immediately page storage-oncall (PagerDuty: voice-platform, escalation per incident.yaml). Follow runbook storage-platform/runbooks/nfs-disk-full.md: (1) Identify and remove accumulated .tmp files under /var/nfs/recordings — per past incident 2026-05-14, stale .tmp files from stuck log rotation are a known culprit: `find /var/nfs/recordings -name '*.tmp' -mtime +1 -delete`. (2) If that is insufficient, expand the NFS volume (thin-provisioned, so expansion may be fast). (3) Once free space is restored and NFS writes succeed, verify call-recorder resumes writing by tailing `call-recorder` logs for absence of 'No space left on device'. (4) Do NOT restart call-recorder pods until disk is free — restarting does not free disk and drops in-flight calls. (5) Monitor `node_filesystem_avail_bytes` alert thresholds (85%/95%) to ensure they are firing correctly and add a hard stop before 100% in future.
+[term#230] evidence: • 2026-07-14T15:23:38Z file-server WARN disk_usage=/var/nfs/recordings 95% (allocated 9.5T / 10T)
+[term#230] evidence: • 2026-07-14T15:23:38Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#230] evidence: • 2026-07-14T15:23:40Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#230] evidence: • 2026-07-14T15:23:38Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#230] evidence: • 2026-07-14T15:23:39Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+[term#230] evidence: • 2026-07-14T15:23:39Z call-recorder WARN transcription queue depth=4123 (soft-limit 4000)
+[term#230] evidence: • 2026-07-14T15:25:05Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.txt - No space left on device
+[term#230] evidence: • 2026-07-14T15:25:05Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /var/nfs/recordings
+[term#230] evidence: • 2026-07-14T15:25:07Z file-server CRIT disk_usage=/var/nfs/recordings 100% (allocated 10T / 10T)
+[term#230] evidence: • 2026-07-14T15:21:07Z WARN log-shipper - filebeat harvester: write /var/log/app.log: no space left on device (disk 100% full)
+[term#230] evidence: • 2026-07-14T15:23:39Z media-server WARN peer=recorder-3 forwarding stalled buffer=812
+[term#230] evidence: • 2026-07-14T15:23:40Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+[term#230] info: ??? investigation complete ???
+[approval] incident #230 ? investigated
+[emailer] notify_investigation_done called for incident #230
+INFO:     127.0.0.1:62787 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62685 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61281 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=auth-gateway team=platform-security :: 2026-07-14T15:26:15Z FATAL auth-gateway - tls: expired certificate: x509: certificate has expired or
+INFO:     127.0.0.1:62685 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61281 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50502 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61609 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61281 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62685 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61281 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62685 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61281 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62685 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62787 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61281 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62685 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:26:26Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:59788 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57253 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57253 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57253 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] Investigation complete #230 — call-recorder: file-server (97% conf)
+INFO:     127.0.0.1:56089 - "POST /api/approve/230 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56089 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=file-server team=voice-platform-oncall :: 2026-07-14T15:26:26Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:57253 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57288 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56089 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52528 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59052 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50706 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56089 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:26:27Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:56365 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57288 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56089 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52528 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57253 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59052 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56089 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:26:28Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:52528 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59788 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57288 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56089 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53958 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57253 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59052 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50706 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59052 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50706 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49266 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63253 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52479 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54410 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54822 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54522 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49266 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54522 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54410 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54522 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54410 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49266 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61749 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51101 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55567 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49789 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=log-shipper team=sre :: 2026-07-14T15:27:13Z WARN log-shipper - filebeat harvester: write /var/log/app.log: no space left on
+INFO:     127.0.0.1:60272 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49789 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56110 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51470 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56110 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56110 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55319 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51470 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53211 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53211 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53211 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:27:29Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:53211 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61620 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58159 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61620 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64717 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58159 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53211 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52407 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61620 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64717 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58159 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61620 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52016 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52016 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52016 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60983 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58272 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=checkout-web team=checkout-oncall :: 2026-07-14T15:27:57Z ERROR checkout-web - readiness probe failed HTTP 503; deployment rollout stuck 
+INFO:     127.0.0.1:58660 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49193 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59111 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56155 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49193 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58660 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59111 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58660 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49193 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49193 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58660 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49675 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57934 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61552 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:28:22Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:56707 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63417 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56707 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63417 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53183 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56707 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61056 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61056 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58077 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62675 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=payment-service team=payments-oncall :: 2026-07-14T15:28:29Z ERROR payment-service - java.lang.OutOfMemoryError: Java heap space at com.acme
+INFO:     127.0.0.1:51731 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65185 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56248 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56248 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51162 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51162 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51162 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51731 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55988 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50913 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50913 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50913 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63240 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63294 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58427 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58691 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58427 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:06Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:07Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:52044 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:07Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:61404 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54715 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53559 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53559 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53559 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/pending HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:08Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:61404 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54715 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53559 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61404 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53559 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52203 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56367 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53559 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52044 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54715 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60090 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60090 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60090 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60556 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62283 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54560 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=search-service team=sre-general :: 2026-07-14T15:29:30Z ERROR search-service - elasticsearch cluster went yellow, replica shards unassi
+INFO:     127.0.0.1:62283 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54560 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60556 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55107 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55107 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55107 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55107 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=billing-worker team=sre-general :: 2026-07-14T15:29:32Z WARN billing-worker - stripe webhook signature validation failed for event evt_
+INFO:     127.0.0.1:54560 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60556 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62283 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55107 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49734 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49734 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49734 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55107 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50813 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65368 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55107 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54019 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55371 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] NEW incident #287 — search-service (UNKNOWN)
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] NEW incident #290 — billing-worker (UNKNOWN)
+INFO:     127.0.0.1:61284 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64777 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64184 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64184 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64184 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54539 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54539 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54539 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=ml-inference team=sre-general :: 2026-07-14T15:30:10Z ERROR ml-inference - model artifact checksum mismatch for model_v42.bin; refusi
+INFO:     127.0.0.1:54539 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63212 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65067 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65014 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54539 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65014 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65067 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54539 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65067 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65014 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63212 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57435 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] sent to thoshi4444@gmail.com: [Smart Triage] NEW incident #291 — ml-inference (UNKNOWN)
+INFO:     127.0.0.1:50610 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53367 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54535 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61853 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:30:28Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:54535 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61853 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53367 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:30:28Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:51630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61853 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53367 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54535 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:30:28Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:57515 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53367 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54535 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61853 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/pending HTTP/1.1" 200 OK
+[triage] status=pending_approval product=orders-api team=orders-oncall :: 2026-07-14T15:30:33Z ERROR orders-api - HikariPool-1 - Connection is not available, request timed ou
+INFO:     127.0.0.1:54535 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61853 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53367 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:30:30Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:61853 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53367 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54535 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57515 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56418 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62946 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62946 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62946 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63789 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58492 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63789 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:31:07Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:59634 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59634 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59634 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57560 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55960 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57560 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57560 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55960 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57560 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55960 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57560 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55960 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55960 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57560 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61047 - "GET /api/metrics HTTP/1.1" 200 OK
+TP/1.1" 200 OK
+INFO:     127.0.0.1:64294 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:21:54Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:52769 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64294 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52892 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58780 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52584 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52769 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64294 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58780 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52892 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52584 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64294 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58780 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55141 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55503 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55141 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=auth-gateway team=platform-security :: 2026-07-14T15:22:08Z FATAL auth-gateway - tls: expired certificate: x509: certificate has expired or
+INFO:     127.0.0.1:57689 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57689 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57689 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49758 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62954 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49758 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62954 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49758 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60587 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62954 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=search-service team=sre-general :: 2026-07-14T15:22:31Z ERROR search-service - elasticsearch cluster went yellow, replica shards unassi
+INFO:     127.0.0.1:58934 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51004 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64340 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52913 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58934 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52913 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51004 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52913 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51004 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58934 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51004 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64340 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54514 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52913 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62819 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56545 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51004 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62819 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56545 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] failed to send to rushikesh.thorat@vit.edu: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-47f476e9d02sm8735576f8f.19 - gsmtp')
+[triage] status=pending_approval product=checkout-web team=checkout-oncall :: 2026-07-14T15:23:06Z ERROR checkout-web - readiness probe failed HTTP 503; deployment rollout stuck 
+INFO:     127.0.0.1:61947 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60606 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61106 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49317 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51008 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58021 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51008 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58021 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51008 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:39Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:51915 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51008 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50193 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56180 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:38Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:58021 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50193 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51008 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56180 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:38Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:58021 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58021 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51008 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50193 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56180 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58021 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58021 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58021 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:23:40Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:58021 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51008 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50193 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56180 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63124 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58021 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58310 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51915 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=reports-cron team=data-platform :: 2026-07-14T15:24:03Z WARN reports-cron - job running for 3600s (expected 600s), no heartbeat, markin
+INFO:     127.0.0.1:52751 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64611 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65378 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55910 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55366 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58869 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=auth-gateway team=platform-security :: 2026-07-14T15:24:08Z FATAL auth-gateway - tls: expired certificate: x509: certificate has expired or
+INFO:     127.0.0.1:64611 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65378 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55366 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55366 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65378 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55366 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64611 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60269 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65378 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64611 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57840 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61684 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57203 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57840 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61684 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57203 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57840 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61684 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57203 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57840 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61684 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57840 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:05Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:06Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:53829 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58695 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53137 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65147 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:05Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:53829 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58695 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65147 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53137 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58695 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65147 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53137 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54225 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65147 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64931 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61491 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53137 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61491 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61491 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:25:07Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:61978 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64931 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65147 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54225 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61491 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61978 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53829 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61491 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62253 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=billing-worker team=sre-general :: 2026-07-14T15:25:15Z WARN billing-worker - stripe webhook signature validation failed for event evt_
+INFO:     127.0.0.1:63608 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49959 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] failed to send to rushikesh.thorat@vit.edu: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-47f464a9879sm9906649f8f.22 - gsmtp')
+INFO:     127.0.0.1:56898 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58370 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58680 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50181 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59045 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56898 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58680 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50181 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58370 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56898 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58680 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=auth-gateway team=platform-security :: 2026-07-14T15:26:15Z FATAL auth-gateway - tls: expired certificate: x509: certificate has expired or
+INFO:     127.0.0.1:58355 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52137 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52137 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50505 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52058 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52420 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50505 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52420 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52058 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50505 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52058 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52420 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:26:26Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:57447 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56002 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53650 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57397 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:26:27Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:54880 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57397 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53650 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56002 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59798 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:26:26Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:57833 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59798 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53650 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56002 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57397 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56024 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59798 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56024 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59798 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:26:28Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:57833 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56002 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59798 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56024 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57397 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53650 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57833 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59798 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56024 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54683 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54683 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54683 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62303 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=log-shipper team=sre :: 2026-07-14T15:27:13Z WARN log-shipper - filebeat harvester: write /var/log/app.log: no space left on
+INFO:     127.0.0.1:56083 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55448 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50968 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62036 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51385 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52856 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56083 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54420 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50968 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55448 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62036 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54420 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:27:29Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:60144 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60144 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60144 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63317 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52056 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55546 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63317 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52056 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55546 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63317 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52056 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55546 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53880 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53088 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51533 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52482 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52012 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53880 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52482 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53088 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51533 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51533 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52482 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53088 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=checkout-web team=checkout-oncall :: 2026-07-14T15:27:57Z ERROR checkout-web - readiness probe failed HTTP 503; deployment rollout stuck 
+INFO:     127.0.0.1:59336 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63225 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62117 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59336 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63225 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62117 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59336 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63225 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59586 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62117 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:28:22Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:51112 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62362 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51112 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56364 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62362 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55462 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62362 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56364 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51112 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56364 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56555 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60056 - "GET /api/pending HTTP/1.1" 200 OK
+[triage] status=auto_resolved product=payment-service team=payments-oncall :: 2026-07-14T15:28:29Z ERROR payment-service - java.lang.OutOfMemoryError: Java heap space at com.acme
+INFO:     127.0.0.1:50953 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50953 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50953 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61183 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60056 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60056 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62869 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60056 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61183 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50953 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50953 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61183 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57729 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61183 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50953 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64373 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64373 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64373 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63258 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51276 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63258 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:06Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:61002 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49930 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61002 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49930 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61002 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49930 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:07Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:59834 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61002 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50279 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55322 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49930 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50041 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57359 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49930 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:07Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:49930 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50279 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61002 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55322 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57359 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49930 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57359 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=media-server/call-recorder team=voice-platform-oncall :: 2026-07-14T15:29:08Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:57359 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61002 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50279 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55322 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49930 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57359 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59604 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59834 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50041 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57359 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55322 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50279 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61002 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53365 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49946 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53561 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=search-service team=sre-general :: 2026-07-14T15:29:30Z ERROR search-service - elasticsearch cluster went yellow, replica shards unassi
+INFO:     127.0.0.1:53561 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49946 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53365 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=alerted_new product=billing-worker team=sre-general :: 2026-07-14T15:29:32Z WARN billing-worker - stripe webhook signature validation failed for event evt_
+INFO:     127.0.0.1:53365 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51556 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49946 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53561 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56625 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59735 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59619 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56625 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51556 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59619 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59619 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51556 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56625 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60364 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51556 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59619 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56625 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51556 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] failed to send to rushikesh.thorat@vit.edu: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-4950a32b9f3sm94530685e9.13 - gsmtp')
+[emailer] failed to send to rushikesh.thorat@vit.edu: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-47f464b7f09sm8826670f8f.26 - gsmtp')
+[triage] status=alerted_new product=ml-inference team=sre-general :: 2026-07-14T15:30:10Z ERROR ml-inference - model artifact checksum mismatch for model_v42.bin; refusi
+INFO:     127.0.0.1:57696 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65113 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65113 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65113 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57696 - "GET /api/metrics HTTP/1.1" 200 OK
+[emailer] failed to send to rushikesh.thorat@vit.edu: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-49508731fcdsm71583625e9.4 - gsmtp')
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:30:28Z call-recorder ERROR TranscriptWriter write error: /mnt/recordings/sess_abc123.t
+INFO:     127.0.0.1:63852 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58717 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63852 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58717 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:30:28Z file-server ERROR nfsd: write failed (xid=0x8b3f) : No space left on device /va
+INFO:     127.0.0.1:57878 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+[triage] status=pending_approval product=call-recorder team=voice-platform-oncall :: 2026-07-14T15:30:28Z call-recorder ERROR session=sess_abc123 dropping recording, IO error
+INFO:     127.0.0.1:63852 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58717 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50467 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63852 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50467 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50467 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63852 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=orders-api team=orders-oncall :: 2026-07-14T15:30:33Z ERROR orders-api - HikariPool-1 - Connection is not available, request timed ou
+[triage] status=pending_approval product=media-server team=voice-platform-oncall :: 2026-07-14T15:30:30Z media-server ERROR peer=recorder-3 unreachable, dropping stream after 3 retries
+INFO:     127.0.0.1:62845 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63852 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50467 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61059 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62192 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58717 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50467 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58717 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58717 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62852 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57878 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62845 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58717 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51366 - "GET /api/metrics HTTP/1.1" 200 OK
+[triage] status=pending_approval product=inventory-service team=inventory-oncall :: 2026-07-14T15:31:07Z ERROR inventory-service - upstream returned 502, elevated 5xx rate at 15%, p99 
+INFO:     127.0.0.1:60896 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60896 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60896 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50055 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50055 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57623 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50471 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50055 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57623 - "GET /api/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50471 - "GET /api/incidents?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50055 - "GET /api/pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57623 - "GET /api/metrics HTTP/1.1" 200 OK

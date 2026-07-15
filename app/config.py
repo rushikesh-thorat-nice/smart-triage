@@ -39,12 +39,17 @@ class Settings(BaseSettings):
     smtp_password: str = ""    # 16-char app password from myaccount.google.com/apppasswords
     smtp_from_name: str = "Smart Triage"
 
-    # Fallback recipient when a team has no entry in team_contacts
+    # Comma-separated list of addresses that always receive every notification.
+    # Example: "you@gmail.com,colleague@vit.edu"
     notification_email: str = ""
 
     # JSON map of team-slug → email address.
     # Example: {"payments-oncall": "payments@co.com", "sre": "sre@co.com"}
     team_contacts: str = "{}"
+
+    @property
+    def notification_emails(self) -> list[str]:
+        return [e.strip() for e in self.notification_email.split(",") if e.strip()]
 
 
 settings = Settings()

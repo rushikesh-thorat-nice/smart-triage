@@ -18,12 +18,26 @@ from typing import Any
 from .config import settings
 
 
-def _team_email(team: str) -> str | None:
+def _team_emails(team: str) -> list[str]:
+    """Return all recipient addresses for a team — always includes all NOTIFICATION_EMAILS."""
     try:
         mapping: dict[str, str] = json.loads(settings.team_contacts)
     except Exception:
         mapping = {}
-    return mapping.get(team) or settings.notification_email or None
+
+    recipients: list[str] = []
+
+    # Team-specific address first
+    team_addr = mapping.get(team)
+    if team_addr:
+        recipients.append(team_addr)
+
+    # Always CC all addresses in NOTIFICATION_EMAILS
+    for addr in settings.notification_emails:
+        if addr and addr not in recipients:
+            recipients.append(addr)
+
+    return recipients
 
 
 def _is_configured() -> bool:
@@ -97,8 +111,8 @@ def _esc(s: str) -> str:
 async def notify_new_incident(inc: dict[str, Any]) -> None:
     if not _is_configured():
         return
-    to = _team_email(inc.get("owner_team", ""))
-    if not to:
+    recipients = _team_emails(inc.get("owner_team", ""))
+    if not recipients:
         print(f"[emailer] no contact for team '{inc.get('owner_team')}' — skipping")
         return
 
@@ -136,7 +150,8 @@ async def notify_new_incident(inc: dict[str, Any]) -> None:
 
       <div class='footer'>Smart Triage &nbsp;·&nbsp; incident #{inc_id} &nbsp;·&nbsp; <a href='http://localhost:8000'>Open dashboard</a></div>
     """
-    await _send(to, subject, _wrap(body))
+    for to in recipients:
+        await _send(to, subject, _wrap(body))
 
 
 async def notify_investigation_done(inc: dict[str, Any]) -> None:
@@ -151,8 +166,8 @@ async def notify_investigation_done(inc: dict[str, Any]) -> None:
         return
 
     page_team = report.get("page_team") or inc.get("owner_team", "")
-    to = _team_email(page_team)
-    if not to:
+    recipients = _team_emails(page_team)
+    if not recipients:
         print(f"[emailer] no contact for team '{page_team}' — skipping")
         return
 
@@ -202,4 +217,5 @@ async def notify_investigation_done(inc: dict[str, Any]) -> None:
 
       <div class='footer'>Smart Triage &nbsp;·&nbsp; incident #{inc_id} &nbsp;·&nbsp; <a href='http://localhost:8000'>Open dashboard</a></div>
     """
-    await _send(to, subject, _wrap(body))
+    for to in recipients:
+        await _send(to, subject, _wrap(body))
