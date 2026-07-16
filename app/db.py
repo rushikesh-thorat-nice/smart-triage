@@ -18,10 +18,11 @@ class KBEntry(Base):
     severity: Mapped[str] = mapped_column(String)
     pattern_description: Mapped[str] = mapped_column(Text)
     symptoms: Mapped[str] = mapped_column(Text)
-    # "execute" (default): run resolution_command via runner.
+    # "execute": run resolution_steps (list of echo commands) in sequence.
     # "investigate": launch the investigator agent against scenario_slug.
     action_type: Mapped[str] = mapped_column(String, default="execute")
-    resolution_command: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # JSON-encoded list of echo step strings, e.g. ["echo Step 1...", "echo Step 2..."]
+    resolution_steps: Mapped[str | None] = mapped_column(Text, nullable=True)
     resolution_summary: Mapped[str] = mapped_column(Text)
     scenario_slug: Mapped[str | None] = mapped_column(String, nullable=True)
     auto_execute: Mapped[bool] = mapped_column(Boolean, default=False)
@@ -41,6 +42,7 @@ class Incident(Base):
     confidence: Mapped[float] = mapped_column(Float)
     reasoning: Mapped[str] = mapped_column(Text)
     recommended_action: Mapped[str | None] = mapped_column(Text, nullable=True)
+    resolution_steps: Mapped[str | None] = mapped_column(Text, nullable=True)  # JSON list of echo steps
     action_type: Mapped[str] = mapped_column(String, default="execute")  # execute | investigate
     scenario_slug: Mapped[str | None] = mapped_column(String, nullable=True)
     status: Mapped[str] = mapped_column(String)  # auto_resolved | pending_approval | approved | rejected | alerted_new | failed | investigating | investigated

@@ -38,6 +38,7 @@ def _incident_to_dict(inc: Incident) -> dict:
         "confidence": inc.confidence,
         "reasoning": inc.reasoning,
         "recommended_action": inc.recommended_action,
+        "resolution_steps": json.loads(inc.resolution_steps) if inc.resolution_steps else None,
         "action_type": inc.action_type,
         "scenario_slug": inc.scenario_slug,
         "status": inc.status,
@@ -66,7 +67,7 @@ async def _handle_log_line(line: str) -> None:
     # Fallback team/severity if we could not match anything.
     owner_team = matched_kb.owner_team if matched_kb else "sre-general"
     severity = matched_kb.severity if matched_kb else "unknown"
-    recommended_action = matched_kb.resolution_command if matched_kb else None
+    resolution_steps = matched_kb.resolution_steps if matched_kb else None
     action_type = matched_kb.action_type if matched_kb else "execute"
     scenario_slug = matched_kb.scenario_slug if matched_kb else None
 
@@ -86,7 +87,8 @@ async def _handle_log_line(line: str) -> None:
         severity=severity,
         confidence=float(decision["confidence"]),
         reasoning=decision["reasoning"],
-        recommended_action=recommended_action,
+        recommended_action=matched_kb.resolution_summary if matched_kb else None,
+        resolution_steps=resolution_steps,
         action_type=action_type,
         scenario_slug=scenario_slug,
         status=status,
@@ -98,13 +100,14 @@ async def _handle_log_line(line: str) -> None:
         session.refresh(inc)
         incident_id = inc.id
 
-    if status == "auto_resolved" and recommended_action:
-        result = await asyncio.to_thread(runner.execute, recommended_action)
+    if status == "auto_resolved" and resolution_steps:
+        steps_list = json.loads(resolution_steps)
+        outputs = await _run_steps(incident_id, steps_list)
         with get_session() as session:
             row = session.get(Incident, incident_id)
             if row:
-                row.action_output = result["output"]
-                row.status = "auto_resolved" if result["success"] else "failed"
+                row.action_output = "\n".join(outputs)
+                row.status = "auto_resolved"
                 row.resolved_at = datetime.utcnow()
                 session.commit()
                 session.refresh(row)
@@ -114,6 +117,18 @@ async def _handle_log_line(line: str) -> None:
 
     if status == "alerted_new":
         await emailer.notify_new_incident(_incident_to_dict(inc))
+
+
+async def _run_steps(incident_id: int, steps: list[str]) -> list[str]:
+    """Execute each echo step in sequence, streaming progress to the terminal."""
+    outputs: list[str] = []
+    for step in steps:
+        await notifier.emit_term(incident_id, "step", step.replace("echo ", "", 1))
+        result = await asyncio.to_thread(runner.execute, step)
+        line = result["output"]
+        outputs.append(line)
+        await notifier.emit_term(incident_id, "info", line)
+    return outputs
 
 
 async def _run_investigation(incident_id: int, scenario_slug: str, log_line: str) -> dict:
@@ -263,7 +278,7 @@ async def approve(incident_id: int):
         action_type = inc.action_type
         scenario_slug = inc.scenario_slug
         log_line = inc.log_line
-        action = inc.recommended_action
+        resolution_steps = json.loads(inc.resolution_steps) if inc.resolution_steps else None
 
     # Investigate-type approvals launch the agent instead of running a shell command.
     if action_type == "investigate":
@@ -297,16 +312,16 @@ async def approve(incident_id: int):
         await emailer.notify_investigation_done(payload)
         return payload
 
-    # Default: execute the shell command.
-    if not action:
-        raise HTTPException(status_code=400, detail="no recommended action to run")
+    # Default: run the echo steps in sequence.
+    if not resolution_steps:
+        raise HTTPException(status_code=400, detail="no resolution steps to run")
 
-    result = await asyncio.to_thread(runner.execute, action)
+    outputs = await _run_steps(incident_id, resolution_steps)
 
     with get_session() as session:
         inc = session.get(Incident, incident_id)
-        inc.action_output = result["output"]
-        inc.status = "approved" if result["success"] else "failed"
+        inc.action_output = "\n".join(outputs)
+        inc.status = "approved"
         inc.resolved_at = datetime.utcnow()
         session.commit()
         session.refresh(inc)

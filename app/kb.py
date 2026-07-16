@@ -58,6 +58,7 @@ def seed_from_file(path: str | None = None) -> int:
         for row in session.query(KBEntry).all():
             session.delete(row)
         for e in entries:
+            steps = e.get("resolution_steps")
             session.add(KBEntry(
                 id=e["id"],
                 product=e["product"],
@@ -66,7 +67,7 @@ def seed_from_file(path: str | None = None) -> int:
                 pattern_description=e["pattern_description"],
                 symptoms=e["symptoms"],
                 action_type=e.get("action_type", "execute"),
-                resolution_command=e.get("resolution_command"),
+                resolution_steps=json.dumps(steps) if steps else None,
                 resolution_summary=e["resolution_summary"],
                 scenario_slug=e.get("scenario_slug"),
                 auto_execute=e.get("auto_execute", False),
@@ -121,7 +122,7 @@ def list_entries() -> list[dict[str, Any]]:
                 "severity": r.severity,
                 "pattern_description": r.pattern_description,
                 "resolution_summary": r.resolution_summary,
-                "resolution_command": r.resolution_command,
+                "resolution_steps": json.loads(r.resolution_steps) if r.resolution_steps else None,
                 "action_type": r.action_type,
                 "scenario_slug": r.scenario_slug,
                 "auto_execute": r.auto_execute,

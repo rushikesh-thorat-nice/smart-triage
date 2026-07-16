@@ -220,12 +220,19 @@ function renderPending(inc) {
           <div class="text-xs text-slate-400 mb-3 italic">${escapeHtml(inc.reasoning || "")}</div>
 
           <div class="text-[11px] text-purple-200 border border-purple-800/40 rounded p-2 bg-purple-950/30 mb-3">
+            <div class="font-semibold mb-2">The call recording may stop due to:</div>
+            <ol class="list-decimal list-inside space-y-0.5 text-slate-300 mb-3">
+              <li>Media server stopped sending voice packets to recorder</li>
+              <li>Call recorder is receiving the packets but unable to process them</li>
+              <li>The disk / file server where the recording is being written is corrupted or full</li>
+              <li>All servers are fine but the network conn between MS and recorder or recorder and File server has a glitch</li>
+              <li>Max recording limit for a client reached</li>
+            </ol>
             <div class="font-semibold mb-1">Clicking <span class="text-purple-100">Run Investigation</span> will:</div>
             <ol class="list-decimal list-inside space-y-0.5 text-slate-300">
-              <li>Fetch <code class="text-purple-200">rushikesh-thorat-nice/demo/incidents/${escapeHtml(inc.scenario_slug || '?')}</code> from GitHub</li>
-              <li>Correlate the last ~40 log lines against the runbook hypotheses</li>
-              <li>Ask Claude Sonnet 4.6 to identify the faulty component</li>
-              <li>Auto-page the correct team (may differ from initial routing)</li>
+              <li>Scan logs of all servers, try to narrow down on the faulty server / component</li>
+              <li>Spawn an agent to go to GitHub repo of the component, find the root cause and keep a proposal for solution ready</li>
+              <li>Raise a NOC alert and attach the proposal</li>
             </ol>
             <div class="mt-1 text-slate-400">Watch the <span class="text-purple-200">Investigator terminal</span> below for live progress.</div>
           </div>
@@ -241,18 +248,28 @@ function renderPending(inc) {
     `;
   }
 
-  // Simple execute-type card (unchanged behavior)
+  // Simple execute-type card: shows resolution steps
+  const steps = inc.resolution_steps || [];
+  const stepsHtml = steps.length
+    ? `<ol class="list-decimal list-inside space-y-0.5 text-slate-300">
+        ${steps.map(s => `<li class="font-mono text-[11px]">${escapeHtml(s.replace(/^echo /, ""))}</li>`).join("")}
+       </ol>`
+    : `<div class="font-mono text-xs text-slate-400">${escapeHtml(inc.recommended_action || "")}</div>`;
+
   return `
     <div class="border border-amber-900/40 rounded-md p-3 bg-slate-950/40">
       <div class="flex items-center gap-2 flex-wrap mb-1">
         <span class="text-xs text-slate-500">#${inc.id}</span>
-        <span class="text-[10px] uppercase tracking-wider text-amber-300 bg-amber-900/40 px-1.5 py-0.5 rounded">run command</span>
+        <span class="text-[10px] uppercase tracking-wider text-amber-300 bg-amber-900/40 px-1.5 py-0.5 rounded">auto steps</span>
         <span class="text-xs font-medium text-slate-200">${escapeHtml(inc.product)}</span>
         <span class="text-xs text-slate-500">→ ${escapeHtml(inc.owner_team)}</span>
       </div>
       <div class="text-xs font-mono text-slate-300 break-all mb-2">${escapeHtml((inc.log_line || "").slice(0, 200))}</div>
       <div class="text-xs text-slate-400 mb-2">${escapeHtml(inc.reasoning || "")}</div>
-      <div class="text-xs bg-slate-950 border border-slate-800 rounded p-2 font-mono mb-3">${escapeHtml(inc.recommended_action || "")}</div>
+      <div class="text-[11px] border border-amber-900/30 rounded p-2 bg-amber-950/20 mb-3">
+        <div class="text-amber-300 font-semibold mb-1">Steps to execute:</div>
+        ${stepsHtml}
+      </div>
       <div class="flex gap-2">
         <button data-approve="${inc.id}" class="px-3 py-1 text-xs bg-emerald-700 hover:bg-emerald-600 rounded font-medium">Approve &amp; run</button>
         <button data-reject="${inc.id}" class="px-3 py-1 text-xs bg-slate-700 hover:bg-slate-600 rounded font-medium">Reject</button>
